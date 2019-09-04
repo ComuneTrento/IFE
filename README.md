@@ -21,10 +21,10 @@ Depending of the features, different JS Libraries should be selected.
 
 | File | Feature | Mandatory | Required Component | Description |
 | :--- | :--- | :---: | :---: | :--- |
-|  *simpatico-auth.js* | **Authentication**  | Yes | [AAC](https://github.com/SIMPATICOProject/aac) |The Authentication and Authorization Control Module client connected to the SIMPATICO **AAC** module |
+|  *simpatico-auth.js* | **Authentication**  | Yes | [AAC](https://github.com/SPRINT-Project/aac) |The Authentication and Authorization Control Module client connected to the SIMPATICO **AAC** module |
 | *ctz-ui.js* and *ctz-core.js* | **Questions and Diagrams**  | No | [Citizenpedia](https://github.com/SIMPATICOProject/citizenpedia)  | The Citizenpedia Component client which exposes questions related to the e-service, it enables users to ask new ones and search a diagram which represents the current e-service |
-| *tae-ui.js* and *tae-core.js* / *tae-ui-popup.js* and *tae-core-popup.js* | **Text Adaptation**  | No | [TAE/WAE](https://github.com/SIMPATICOProject/simpatico-adaptation-engines)  | The Text Adaptation Engine Component client which exposes text simplifications and complex words definitions and synonyms to ease the e-service understanding  |
-| *wae-ui.js* and *wae-core.js* | **Workflow Adaptation**  | No | [TAE/WAE](https://github.com/SIMPATICOProject/simpatico-adaptation-engines)  | The Workflow Adaptation Engine Component client which exposes the workflow simplification and adaptation functionality  |
+| *tae-ui.js* and *tae-core.js* / *tae-ui-popup.js* and *tae-core-popup.js* | **Text Adaptation**  | No | [TAE/WAE](https://github.com/SPRINT-Project/simpatico-adaptation-engines)  | The Text Adaptation Engine Component client which exposes text simplifications and complex words definitions and synonyms to ease the e-service understanding  |
+| *wae-ui.js* and *wae-core.js* | **Workflow Adaptation**  | No | [TAE/WAE](https://github.com/SPRINT-Project/simpatico-adaptation-engines)  | The Workflow Adaptation Engine Component client which exposes the workflow simplification and adaptation functionality  |
 
 The integration and configuration of these components is specific to the deployment environment. Basic setup 
 consists of instrumenting a SIMPATICO toolbar, where the access to the SIMPATICO instruments is 
@@ -90,7 +90,7 @@ change this script. In particular, it is possible to define which components sho
 
 ## 3. Configuring IFE Components
 
-The configuration of IFE modules is performed within the [simpatico-ife.js](https://github.com/SIMPATICOProject/IFE/blob/master/js/simpatico-ife.js) file.
+The configuration of IFE modules is performed within the [simpatico-ife.js](https://github.com/SPRINT-Project/IFE/blob/master/js/simpatico-ife.js) file.
 
 ### Configure Authentication
 
@@ -113,12 +113,12 @@ Parameters:
 * **clientID**: the IFE Client ID registered in the AAC instance
 * **authority**: the used authentication mechanism. If not specified, the authority (authorities) will be taken from the AAC client configuration.
 * **redirect**: (optional, defaults to /IFE/login.html) the page to which AAC redirects upon successful integration. Please note that IFE expects 
-the redirect page to contain the scripts which communicates the OAuth2.0 token information upon success. See [login.html](https://github.com/SIMPATICOProject/IFE/blob/master/login.html)
+the redirect page to contain the scripts which communicates the OAuth2.0 token information upon success. See [login.html](https://github.com/SPRINT-Project/IFE/blob/master/login.html)
 page for details.
 * **greeting**: a string to invite the user to signin.
 
 **IMPORTANT!** For the Authentication to work correctly under IE 10/11, it is necessary that the redirect page is **IN THE SAME DOMAIN** the e-service page is. The
-code of the redirect page should reflect the one found in [login.html](https://github.com/SIMPATICOProject/IFE/blob/master/login.html). 
+code of the redirect page should reflect the one found in [login.html](https://github.com/SPRINT-Project/IFE/blob/master/login.html). 
 
 ### Configure Question and Answer Module (Citizenpedia)
 
@@ -269,8 +269,8 @@ Parameters:
 * **errorLabel**:  error messages for the adapted workflow blocks, if available on the page.
 
 Please note that the module requires that the corresponding workflow has been uploaded to the WAE repository. The example of the
-workflow model for the [form.html](https://github.com/SIMPATICOProject/IFE/blob/master/PILOT_TRENTO/form.html) page can be found in 
-[waemodel.json](https://github.com/SIMPATICOProject/IFE/blob/master/PILOT_TRENTO/data/waemodel.json). To upload the model to the repository
+workflow model for the [form.html](https://github.com/SPRINT-Project/IFE/blob/master/PILOT_TRENTO/form.html) page can be found in 
+[waemodel.json](https://github.com/SPRINT-Project/IFE/blob/master/PILOT_TRENTO/data/waemodel.json). To upload the model to the repository
 it is necessary to use the API method ``addModelStoreUsingPOST``.
 
 The URI of the workflow model is configured directly in the page as an **data-simpatico-workflow** attribute of the enclosing HTML tag, e.g.,
