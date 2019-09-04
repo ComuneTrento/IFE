@@ -37,13 +37,6 @@ var authManager = (function () {
         redirect = arr[0] + '//' + arr[2] + '/IFE/login.html';
       }
     }
-      
-    // It uses the log component to register the produced events
-    var logger = function(event, details) {
-      var nop = function(){};
-      if (window['logCORE'])  return logCORE.getInstance().ifeLogger;
-      else return {sessionStart: nop, sessionEnd: nop, formStart: nop, formEnd: nop};
-    }  
 
     // Component-related methods and behaviour
     function handleAuthClick() {
@@ -93,10 +86,6 @@ var authManager = (function () {
     // attach login flow to the sign-in button
     function handleSignoutClick(event) {
       if (!featureEnabled) return;
-      logger().sessionEnd(simpaticoEservice);
-      if (window.simpaticoForm) {
-    	  logger().formEnd(simpaticoEservice, simpaticoForm);
-      }
       localStorage.userData = '';
 	  localStorage.aacTokenData = '';
 	  updateUserData();
@@ -120,13 +109,6 @@ var authManager = (function () {
           }
           enablePrivateFeatures();
           featureEnabled = true;
-          // session started successfully, log
-          logger().sessionStart(simpaticoEservice);
-          // if the e-service page is associated to the form, log the form start event
-          if (window.simpaticoForm) {
-            // log end of session
-        	  logger().formStart(simpaticoEservice, simpaticoForm);
-          }
 
         } else {
         	if (document.getElementById(userdataElementID)) {

@@ -103,7 +103,6 @@ var citizenpediaUI = (function () {
           "paragraphEvent('" + paragraphName + "');");
         paragrapId++;
       }
-      if (window['logCORE']) logCORE.getInstance().startActivity('ctz', 'simplification');
       qaeCORE.getInstance().getDiagramDetails(simpaticoEservice, drawDiagramNotification);
 
     }
@@ -131,16 +130,8 @@ var citizenpediaUI = (function () {
         diagramContainer.parentNode.removeChild(diagramContainer);
         diagramContainer = null;
       }
-      if (window['logCORE']) logCORE.getInstance().endActivity('ctz', 'simplification');      
     }
 
-
-    // It uses the log component to register the produced events
-    var logger = function(event, details) {
-      var nop = function(){};
-      if (window['logCORE'])  return logCORE.getInstance().ctzpLogger;
-      else return {logContentRequest: nop, logQuestionRequest: nop, logNewQuestionRequest: nop, logTermRequest: nop, logNewAnswer: nop};
-    }
 
     // If the Component feature is enabled it calls to the Citizenpedia instance to 
     // get the questions related to the paragraph passed as parameter
@@ -151,7 +142,6 @@ var citizenpediaUI = (function () {
       // trick for WAE
       if ($('#'+paragraphName).hasClass('wae-disabled')) return;
       if (document.getElementById(paragraphName + "_questions") === null) {
-        logger().logContentRequest(simpaticoEservice, paragraphName);
         qaeCORE.getInstance().getQuestions(simpaticoEservice, paragraphName, drawQuestionsBox);
       } else {
         hideQuestionsBox(paragraphName);
@@ -162,7 +152,6 @@ var citizenpediaUI = (function () {
     // - paragraphName: the id of the paragraph which has produced the event
     function createNewQuestionEvent(paragraphName) {
       if (!featureEnabled) return;
-      logger().logNewQuestionRequest(simpaticoEservice, paragraphName);
     }
 
 
@@ -171,7 +160,6 @@ var citizenpediaUI = (function () {
     // - questionID: the id of the question which is the user interested in
     function showQuestionDetailsEvent(paragraphName, questionID) {
       if (!featureEnabled) return;
-      logger().logQuestionRequest(simpaticoEservice, paragraphName, questionID);
     }    
 
     // Draw the questions box
@@ -336,7 +324,6 @@ var citizenpediaUI = (function () {
       setParagraphId: setParagraphId,
       isEnabled: function() { return featureEnabled;}, // Returns if the feature is enabled
       openDiagram: function(){
-    	  if (window['logCORE']) logCORE.getInstance().startActivity('cpd', 'process');
 		    window.open(diagramURL,"_blank");
       },
       openQuestionDiagram: openQuestionDiagram,

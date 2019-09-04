@@ -2,10 +2,10 @@
 The Interactive Front-End component (IFE) is the main component which dialogs with SIMPATICO users meanwhile they are interacting with a Public Administration e-service. Several features of the SIMPATICO platform could be selected and used through this component.
 Features:
  - **Text Adaptation**: *Text simplification* of the paragraphs and of the text selected by the user and *terms definitions* 
- - **Citizen Data Vault**: Automatic *filling of forms* with the user own data
  - **Workflow Adaptation**: simplification and guidance for the form compilation
  - **Question and Answers Engine**: ask and *get questions* related to the enhanced e-service
  - **Collaborative Process Design**: get a *diagram describing* the corresponding e-service
+ - **Authoring Support Tool**: add support for the text analysis to the editors
 
 IFE is a group of JavaScript libraries that runs in a web browser and enables to apply the simpatico enhancement features over the existing electronic services.
 
@@ -14,7 +14,6 @@ IFE is a group of JavaScript libraries that runs in a web browser and enables to
 - [2. Instrumenting E-service Web Page.](#2-instrumenting-e-service-web-page)
 - [3. Configuring IFE Components](#3-configuring-ife-components)
 - [4. Pilot Examples and Test Execution](#4-pilot-examples-and-test-execution)
-- [5. Development of a new feature](#5-development-of-a-new-feature)
 
 ## 1. Usage 
 In order to use Interactive Front-End, JS Libraries should be loaded and configured in each enhanced webpage.
@@ -23,11 +22,9 @@ Depending of the features, different JS Libraries should be selected.
 | File | Feature | Mandatory | Required Component | Description |
 | :--- | :--- | :---: | :---: | :--- |
 |  *simpatico-auth.js* | **Authentication**  | Yes | [AAC](https://github.com/SIMPATICOProject/aac) |The Authentication and Authorization Control Module client connected to the SIMPATICO **AAC** module |
-|  *log-core.js* | **Logging**  | Yes | [LOG](https://github.com/SIMPATICOProject/logs) |The logging component connected to the SIMPATICO **LOG** module |
 | *ctz-ui.js* and *ctz-core.js* | **Questions and Diagrams**  | No | [Citizenpedia](https://github.com/SIMPATICOProject/citizenpedia)  | The Citizenpedia Component client which exposes questions related to the e-service, it enables users to ask new ones and search a diagram which represents the current e-service |
 | *tae-ui.js* and *tae-core.js* / *tae-ui-popup.js* and *tae-core-popup.js* | **Text Adaptation**  | No | [TAE/WAE](https://github.com/SIMPATICOProject/simpatico-adaptation-engines)  | The Text Adaptation Engine Component client which exposes text simplifications and complex words definitions and synonyms to ease the e-service understanding  |
 | *wae-ui.js* and *wae-core.js* | **Workflow Adaptation**  | No | [TAE/WAE](https://github.com/SIMPATICOProject/simpatico-adaptation-engines)  | The Workflow Adaptation Engine Component client which exposes the workflow simplification and adaptation functionality  |
-| *cdv-ui-popup.js* and *cdv-core-popup.js* | **Citizen Data Vault**  | No | [CDV](https://github.com/SIMPATICOProject/CDV)  | The UI components for populating and reading the user personal data from Citizen Data Vault  |
 
 The integration and configuration of these components is specific to the deployment environment. Basic setup 
 consists of instrumenting a SIMPATICO toolbar, where the access to the SIMPATICO instruments is 
@@ -37,7 +34,7 @@ are constructed. These examples configure the components and toolbars via ``simp
 In order to integrate IFE into a e-service Web page, the following steps should be performed:
 - install and configure the platform components required by IFE (see the table above);
 - instrument the e-service Web page with the scripts/style files in order to enable and configure the SIMPATICO toolbar;
-- configure the modules used bt the SIMPATICO toolbar: LOG, AUTH, TAE, WAE, CDV, Citizenpedia.
+- configure the modules used bt the SIMPATICO toolbar: AUTH, TAE, WAE, Citizenpedia.
 
 ## 2. Instrumenting E-service Web Page.
 
@@ -46,11 +43,8 @@ TO enable SIMPATICO toolbar for a specific e-service, the Web page of the e-serv
 to the SIMPATICO JavaScript libraries according to the table defined above. For example: 
 
 ```html
-    <script src="js/log-core.js"></script>
     <script src="js/ctz-ui.js"></script>
     <script src="js/ctz-core.js"></script>
-    <script src="js/cdv-ui-popup.js"></script>
-    <script src="js/cdv-core-popup.js"></script>
     <script src="js/tae-core.js"></script>
     <script src="js/tae-ui.js"></script>
     <script src="js/wae-core.js"></script>
@@ -58,9 +52,6 @@ to the SIMPATICO JavaScript libraries according to the table defined above. For 
 
     <script src="js/tae-core-popup.js"></script>
     <script src="js/tae-ui-popup.js"></script>
-
-    <script src="js/sf-core.js"></script>
-    <script src="js/sf-ui.js"></script>
 
     <script src="js/simpatico-auth.js"></script>
 
@@ -78,7 +69,7 @@ Additionally, it is possible to include and customize the CSS styles for the Sim
 SIMPATICO tools rely on a set of globally available variables that defines properties specific to the current e-service Web page.
 These properties include:
 
-* **simpaticoEservice** (required): It contains the unique id of the enhanced e-service. It is the identifier used by CDV and Citizenpedia.
+* **simpaticoEservice** (required): It contains the unique id of the enhanced e-service.
 * **simpaticoForm** (optional): It contains the unique identifier of the form of a e-service that the user is expected to fill in on the current
 page. If the page does not contain the form, the variable should be omitted. The value is used to log FORM START event upon the page initialization.
 * **simpaticoCategory** (optional): It contains the general category of the enhanced e-service. It is used by the Citizenpedia client.
@@ -128,22 +119,6 @@ page for details.
 
 **IMPORTANT!** For the Authentication to work correctly under IE 10/11, it is necessary that the redirect page is **IN THE SAME DOMAIN** the e-service page is. The
 code of the redirect page should reflect the one found in [login.html](https://github.com/SIMPATICOProject/IFE/blob/master/login.html). 
-
-### Configure Logging
-
-The logging component is used by all the other IFE modules in order to log the relevant interaction events. It should be already installed
-and made available over Internet.
-
-To configure the LOG component it is necessary to setup the logCORE module:
-```JavaScript
-  logCORE.getInstance().init({
-    endpoint: "https://the-logs-endpoint.com/simpatico/api",
-    testMode: false
-  });
-```
-Parameters:
-* **endpoint**: the main URL of the used LOG instance, pointing to the API path.
-* **testMode**: set to true if you want to avoid the log messages being sent to the server (defaults to false).
 
 ### Configure Question and Answer Module (Citizenpedia)
 
@@ -314,83 +289,6 @@ should be included in the page together with the other JavaScript dependencies:
         wgxpath.install();
     </script>
 ```
-
-### Configure Citizen Data Vault Module
-
-The CDV IFE module requires the CDV components already installed and made available over Internet.
-
-To configure the CDV component it is necessary to setup cdvUI module:
-```JavaScript
-  cdvUI.getInstance().init({
-    endpoint: 'https://cdv-domain.com/CDV',
-    serviceID: simpaticoEservice,
-	serviceName: "MY Service Name",
-    serviceURL: "https://service-page-domain.com/path/to/e-service",
-    dataFields: simpaticoMapping,
-    informedConsentLink: "https://page-with-privacy-consent-domain.com/path/to/informed_consent.html",
-    cdvColor: '#008000',
-    dialogTitle: 'Personal data',
-    entryMessage: 'Personal data management',
-    statusMessage: 'Now you can use your personal data to fill in the fields highlighted in green. Use the values saved previsously or add new values.',
-    dialogSaveTitle: 'Data saved',
-    dialogSaveMessage: 'Your personal data has been correctly saved.',
-    statusMessageNoAccount: "No personal account has been associated. Create one?",
-    statusMessageNoActive: "Personal data management is not active. Activate it now?",
-    confirmSaveDataMessage: "Do you want to update your personal data?",
-    buttonSaveData:"Save your data",
-    buttonManageData:"Manage your data",
-    buttonActivate:"Activate",
-    buttonCreate: "Create",
-    consentButton: "Accept",
-    cdvDashUrl:'https://cdv-domain.com/CDV/cdv-dashboard/index.html'
-  });
-```
-Parameters:
-* **endpoint**: the main URL of the used CDV instance
-* **serviceID**: id of the e-service (refers to the global variable)  
-* **dataFields**: fields to process with autocompletion (refers to the global variable)
-* **informedConsentLink**: page with the privacy policy explanations.
-* **cdvColor**: color to use for highlighting the fields
-* **dialogTitle**: title of the popup
-* **entryMessage**: Entry message
-* **statusMessage**: message that the CDV is enabled for the user for the service
-* **dialogSaveTitle**: Title for 'Data saved' notification,
-* **dialogSaveMessage**: Text for 'Data saved' notification,
-* **statusMessageNoAccount**: Message to show when no CDV account has been created yet,
-* **statusMessageNoActive**: Message to show when no CDV account has been activated yet,
-* **confirmSaveDataMessage**: Message for 'save data' confirmation dialog,
-* **buttonSaveData**: Label for save data button,
-* **buttonManageData**: Label for manage data button,
-* **buttonActivate** :Label for activate account button,
-* **buttonCreate**: Label for create account button,
-* **consentButton**: Message for accept privacy consent button,
-* **cdvDashUrl**: link to the CVD dashboard page.
-
-### Configure Session Feedback Module
-
-The SF IFE module requires the LOG components already installed and made available over Internet.
-
-To configure the SF component it is necessary to setup cdvUI module:
-```JavaScript
-  sfUI.getInstance().init({
-    buttonToShowSfId: 'Save',
-    apiEndpoint: 'http://localhost:8080/simpatico/logs',
-    formSelector: 'form',
-    listener: function() {
-    	$('form').submit();
-    },
-  });
-```
-Parameters:
-* **buttonToShowSfId**: the button/link upon which the popup shoud appear. If the session feedback popup should appear in differnt mode,
-it is possible to use ` sfUI.getInstance().showSF()` method.
-* **apiEndpoint**: endpoint of the LOG component to log data to
-* **formSelector**: reference to the form that is submitted
-* **listener**: function to invoke upon SF user action (cancel or submit). 
-
-Note that to configure SF it is necessary to attach the operation either to some 'complete' button or to the form representing e-service form.
-In the former case it is necessary to specify ``buttonToShowSfId`` value. If the form is validated and managed via form ``onsubmit`` property, the ``formSelector`` and ``listener`` should be specified. They will replace the original functionality with the one that shows additionally shows the SF form and the performs the submit.
-
 ### Buttons configuration
 
 In order to personalise the look and feel of each feature button, the parameters of each one should be defined.
@@ -486,28 +384,12 @@ Example of the buttons configuration:
                   enable: function() { var idProfile = null; waeUI.getInstance().enable(idProfile); },
                   disable: function() { waeUI.getInstance().disable(); },
                   text: "Step by step compilation"
-                },
-                {
-                  id: "simp-bar-sw-cdv",
-                  // Ad-hoc images to define the enabled/disabled images
-                  imageSrcEnabled: "./img/cdv.png",
-                  imageSrcDisabled: "./img/cdv.png",
-                  alt: "Citizen Data Vault",
-                  // Ad-hoc css classes to define the enabled/disabled styles
-                  styleClassEnabled: "simp-bar-btn-active-cdv",
-                  styleClassDisabled: "simp-bar-btn-inactive",
-
-                  isEnabled: function() { return cdvUI.getInstance().isEnabled(); },
-                  enable: function() { cdvUI.getInstance().enable(); },
-                  disable: function() { cdvUI.getInstance().disable(); ,
-				          text: "Personal data"
                 }
             ];
 ```
-
 ## 4. Pilot Examples and Test Execution
 
-The example e-service pages with IFE configurations may be found in ``PILOT_*`` subfolders. To run the demos locally, the following steps should be performed:
+The example e-service pages with IFE configurations may be found in ``PILOT_TRENTO`` subfolder. To run the demos locally, the following steps should be performed:
 
 1. Install the local server dependencies (from the root directory of the project):
 ```
@@ -517,123 +399,6 @@ The example e-service pages with IFE configurations may be found in ``PILOT_*`` 
 ```
   npm start
 ```
-3. Open the demo page served at ``http://localhost:10001/``, for example: ``http://localhost:10001/PILOT_GALICIA/index.html``
+3. Open the demo page served at ``http://localhost:10001/``, for example: ``http://localhost:10001/PILOT_TRENTO/form.html``
 
 Please note that some of the demo functionalities may fail due to CORS restrictions with respect to localhost domain.
-
-## 5. Development of a new feature
-
-In order to develope a new feature, two main JavaScrip Libraries should be created and implemented.
-* **newfeature-ui.js**: JavaScript which contains the functionality related to the User Interface.
-* **newfeature-core.js**: JavaScript which contains functions related to the main functionality (e.g. the server calls). It will be called by *newfeature-ui.js*
-
-### Implementation of newfeature-ui.js
-
-1. Implement the initComponent(parameters) function. To be completed...
-2. Implement the enableComponentFeatures() function. To be completed...
-3. Implement the disableComponentFeatures() function. To be completed...
-4. Implement the public functions. To be completed...
-5. Declare the public functions. To be completed...
-
-UI-template:
-```JavaScript
-var newfeatureUI = (function () {
-  var instance; // Singleton Instance
-  var featureEnabled = false; // If the feature is enabled
-  function Singleton () {
-    // Component-related variables
-    var myOwnVariable = '';
-
-    //  [STEP1] Component-related methods and behaviour
-    function initComponent(parameters) {
-      // Init the Component-related variables
-      myOwnVariable = parameters.myOwnVariable
-      // Also init the corresponding CORE component
-      newFeatureCORE.getInstance().init({
-          endpoint: parameters.endpoint
-        });
-    }
-    //  [STEP2] 
-    function enableComponentFeatures() {
-      if (featureEnabled) return;
-      featureEnabled = true;
-      // ...
-      // Code of the new feature enabling (e.g. add onClick events to elements to do stuff)
-    }
-    //  [STEP3] 
-    function disableComponentFeatures() {
-      if (!featureEnabled) return;
-      featureEnabled = false;
-      // ...
-      // Code of the new feature disabling (e.g. remove the added onClick events)
-    }
-
-    // [STEP4]
-    function doStuff(element) {
-      //...
-    }
-
-    return {
-      // Mandatory definitions
-      init: initComponent, // Called only one time
-      enable: enableComponentFeatures,  // Called when the Component button is enabled
-      disable: disableComponentFeatures, // Called when the Component button is disabled or another one enabled
-      isEnabled: function() { return featureEnabled;}, // Returns if the feature is enabled
-      // [STEP5] The ad-hoc functions
-      doStuff: doStuff // Special public function
-    };
-  }
-  
-  return {
-    getInstance: function() {
-      if(!instance) instance = Singleton();
-      return instance;
-    }
-  };
-})();
-```
-
-### Implementation of newfeature-core.js
-The var declared in this file is only used (it should not be used by another objects) in by the one declared in *newFeatureUI.js*, concretely, by newfeatureUI.
-
-Taking the *CORE-template* template as a basis, the functions used in *newFeatureUI.js* should be implemented below the comment tagged as *[STEP1]* and declared below the comment tagged as *[STEP2]*
-
-CORE-template:
-```JavaScript
-var newFeatureCORE = (function () {
-  var instance;
-  function Singleton () {
-    // Component-related variables
-    var endpointA = '';
-    var endpointB = '';
-    
-    //In inits the main used variables (e.g. The URLs used)
-    function initComponent(parameters) {
-      endpointA = parameters.endpoint + '/A';
-      endpointB = parameters.endpoint + '/B';
-    }
-    
-    // [STEP2] Implementation
-    function coreFunctionA() { // Do core stuff }
-    function coreFunctionB() { // Do core stuff }
-
-    return {
-        // [STEP1] Functions used in newFeatureUI 
-        init: initComponent,
-        coreFunctionA: coreFunctionA,
-        coreFunctionB: coreFunctionB
-      };
-  }  
-  return {
-    getInstance: function() {
-      if(!instance) instance = Singleton();
-      return instance;
-    }
-  };
-})();
-
-```
-
-
-
-

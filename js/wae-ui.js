@@ -51,13 +51,6 @@ var waeUI = (function () {
 		topBarHeight = config.topBarHeight != null ? config.topBarHeight : topBarHeight;
 		errorLabel = config.errorLabel;
 	}
-
-	// It uses the log component to register the produced events
-	var logger = function(event, details) {
-		if (window['logCORE'])  return logCORE.getInstance().waeLogger;
-      	else return {logWae: function(){}, logBlockStart: function(){}, logBlockEnd: function(){}};
-    }
-
 	
 	/**
 	 * LOAD MODEL FROM ENGINE
@@ -90,7 +83,6 @@ var waeUI = (function () {
     	} else {
         	this.loadModel(idProfile);
     	}
-		if (window['logCORE']) logCORE.getInstance().startActivity('wae', 'simplification');
 		instance.active = true;
     }
 	/**
@@ -114,8 +106,6 @@ var waeUI = (function () {
 		resetBlock(waeEngine.getActualBlockId());
 		instance.active = false;
 		if (!stay) $('html, body').animate({scrollTop: 0}, 200);
-		//waeEngine.reset();
-		if (window['logCORE']) logCORE.getInstance().endActivity('wae', 'simplification');
 	}
     this.disable = this.reset;
 
@@ -127,9 +117,7 @@ var waeUI = (function () {
 				showElement(key, "HIDE");
 			}
 		}
-		logger().logWae(simpaticoEservice);
 		waeEngine.nextBlock(doActions, moduleErrorMsg);
-		logger().logBlockStart(simpaticoEservice, waeEngine.getActualBlockId());
 	};
 	
 	function moduleLoadError(text) {
@@ -251,9 +239,7 @@ var waeUI = (function () {
 		};
 	
 	function nextBlock() {
-		if (waeEngine.getActualBlockId()) logger().logBlockEnd(simpaticoEservice, waeEngine.getActualBlockId());
 		waeEngine.nextBlock(doActions, moduleErrorMsg);
-		if (waeEngine.getActualBlockId()) logger().logBlockStart(simpaticoEservice, waeEngine.getActualBlockId());
 	};
 	function lastBlock() {
 		instance.reset(true);
@@ -269,9 +255,7 @@ var waeUI = (function () {
 	};
 	
 	function prevBlock() {
-		if (waeEngine.getActualBlockId()) logger().logBlockEnd(simpaticoEservice, waeEngine.getActualBlockId());
 		waeEngine.prevBlock(doActions, moduleErrorMsg);
-		if (waeEngine.getActualBlockId()) logger().logBlockStart(simpaticoEservice, waeEngine.getActualBlockId());
 	};
 	
 	/**
@@ -329,7 +313,6 @@ var waeUI = (function () {
 			$('#guideNotification').hide();
         	this.loadModelWithGuide(idProfile);
     	}
-		if (window['logCORE']) logCORE.getInstance().startActivity('wae', 'simplification');
     }
 	/**
 	 * RESET THE VIEW
@@ -344,7 +327,6 @@ var waeUI = (function () {
 		instance.active = false;
 		$('#guideNotification').hide();
 		if (!stay) $('html, body').animate({scrollTop: 0}, 200);
-		if (window['logCORE']) logCORE.getInstance().endActivity('wae', 'simplification');
 	}
 	this.disableWithGuide = this.resetWithGuide;
 	
@@ -495,14 +477,10 @@ var waeUI = (function () {
 	}
 
 	function nextBlockWithGuide() {
-		if (waeEngine.getActualBlockId()) logger().logBlockEnd(simpaticoEservice, waeEngine.getActualBlockId());
 		waeEngine.nextBlock(doActionsWithGuide, moduleErrorMsgWithGuide);
-		if (waeEngine.getActualBlockId()) logger().logBlockStart(simpaticoEservice, waeEngine.getActualBlockId());
 	};
 	function prevBlockWithGuide() {
-		if (waeEngine.getActualBlockId()) logger().logBlockEnd(simpaticoEservice, waeEngine.getActualBlockId());
 		waeEngine.prevBlock(doActionsWithGuide, moduleErrorMsgWithGuide);
-		if (waeEngine.getActualBlockId()) logger().logBlockStart(simpaticoEservice, waeEngine.getActualBlockId());
 	};
   }
   

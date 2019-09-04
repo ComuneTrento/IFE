@@ -21,14 +21,6 @@ function initFeatures() {
     greeting: 'ACCEDI A SIMPATICO'
   });
   
-  // Init the LOG component (see log-core.js)
-  // - endpoint: the main URL of the used LOG instance
-  // - testMode: true if the data should not be sent to the LOG component
-  if (window['logCORE']) logCORE.getInstance().init({
-	  testMode: true,
-	  endpoint: "https://simpatico.smartcommunitylab.it/simpatico-logs/api"
-  });
-
   // Init the Citizenpedia component (see ctz-ui.js)
   // - endpoint: the main URL of the used Citizenpedia instance
   // - cpdDiagramEndpoint: endpoint of the CPD process summary service (should end with eService)
@@ -318,14 +310,6 @@ document.addEventListener('DOMContentLoaded', function () {
   checkShowTutorial();
 });
 
-window.addEventListener('beforeunload', function (e) {
-  logCORE.getInstance().setSyncMode();	
-  logCORE.getInstance().ifeLogger.sessionEnd(simpaticoEservice);
-  if (window.simpaticoForm) {
-      // log end of session
-	  logCORE.getInstance().ifeLogger.formEnd(simpaticoEservice, simpaticoForm);
-  }
-});
 
 dialog_tutorial = null;
 dialog_step = 0;

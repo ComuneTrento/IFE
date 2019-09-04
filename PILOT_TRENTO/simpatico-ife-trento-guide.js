@@ -5,7 +5,6 @@
 //
 //-----------------------------------------------------------------------------
 
-var cdvRequested = false;
 var waeStarted = true;
 
 function isProd() {
@@ -50,14 +49,6 @@ function initFeatures() {
     authority: null,
     redirect: 'https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/logincb.html',
     greeting: 'ACCEDI A SIMPATICO'
-  });
-  
-  // Init the LOG component (see log-core.js)
-  // - endpoint: the main URL of the used LOG instance
-  // - testMode: true if the data should not be sent to the LOG component
-  logCORE.getInstance().init({
-	  testMode: !logEnabled(),
-	  endpoint: "https://simpatico.smartcommunitylab.it/simpatico-logs/api"
   });
 
   // Init the Citizenpedia component (see ctz-ui.js)
@@ -321,13 +312,6 @@ document.addEventListener('simpaticoDestroy', function () {
 	  $("#guideModal").hide();
       $("#helpModal").hide();
 	  
-	  if (authManager.getInstance().isEnabled()) sfUI.getInstance().showSF();
-	  logCORE.getInstance().setSyncMode();	
-	  logCORE.getInstance().ifeLogger.sessionEnd(simpaticoEservice);
-	  if (window.simpaticoForm) {
-	        // log end of session
-	      logCORE.getInstance().ifeLogger.formEnd(simpaticoEservice, simpaticoForm);
-	  }
 });
 
 // Once the document is loaded the Simpatico features are initialised and the 
@@ -371,15 +355,6 @@ document.addEventListener('simpaticoEvent', function () {
 
 });
 
-
-window.addEventListener('beforeunload', function (e) {
-  logCORE.getInstance().setSyncMode();	
-  logCORE.getInstance().ifeLogger.sessionEnd(simpaticoEservice);
-  if (window.simpaticoForm) {
-      // log end of session
-	  logCORE.getInstance().ifeLogger.formEnd(simpaticoEservice, simpaticoForm);
-  }
-});
 
 dialog_tutorial = null;
 dialog_step = 0;
@@ -428,13 +403,8 @@ function closeTutorial() {
 }
 function nextTutorial() {
 	dialog_step++;
-	// in prod skip CDV for the moment
-	if (isProd() && dialog_step == 1) {
-		nextTutorial();
-		return;
-	}
 	$('#tutorialcontent').html(tutorialContent(dialog_step));
-	if (dialog_step == 2) {
+	if (dialog_step == 1) {
 		$('#tutorialnext').hide();
 	}
 }
@@ -442,8 +412,7 @@ function nextTutorial() {
 function tutorialContent(step) {
 	switch(step) {
 	case 0: return '<p>Il servizio SIMPATICO mette a disposizione strumenti per semplificare la compilazione dei moduli online.</p><br/><p>Per accedere alle funzionalità effettua l\'accesso in alto a destra.</p>';
-	case 1: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/cdv.png"></td><td width="100%">La funzionalità DATI PERSONALI ti consente di salvare e recuperare in altri moduli le informazioni che hai inserito (es. nucleo familiare).</td></tr></table>';
-	case 2: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/forms.png"></td><td width="100%">La funzionalità COMPILAZIONE GUIDATA ti accompagna passo-passo nella compilazione del modulo online.</td></tr></table>';
+	case 1: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/forms.png"></td><td width="100%">La funzionalità COMPILAZIONE GUIDATA ti accompagna passo-passo nella compilazione del modulo online.</td></tr></table>';
 	}
 }
 	

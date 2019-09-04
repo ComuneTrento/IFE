@@ -1,1 +1,0 @@
-Only neccesary files to load html file in this folder  (no javascript,css or other files of the simpatico project)

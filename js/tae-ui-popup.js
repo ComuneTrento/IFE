@@ -26,13 +26,6 @@ var taeUIPopup = (function () {
 	
 		};
 
-		// It uses the log component to register the produced events
-		_instance.logger = function(event, details) {
-			var nop = function(){};
-			if (window['logCORE'])  return logCORE.getInstance().taeLogger;
-	      	else return {logParagraph: nop, logPhrase: nop, logWord: nop, logFreetext: nop, logAction: nop};
-		  }
-		
 		/**
 		 * INITIALIZE UI COMPONENT.
 		 * CONFIG PARAMETERS:
@@ -90,13 +83,11 @@ var taeUIPopup = (function () {
 				height: "auto",
 				width: 600,
 				open: function(){
-	    			if (window['logCORE']) logCORE.getInstance().startActivity('tae', 'simplification');
 	    			_instance.dialogOpened = true;
 	            }, close: function(){
 	            	featureEnabled = false;
 	    			_instance.dialogOpened = false;
-	    			if (window['logCORE']) logCORE.getInstance().endActivity('tae', 'simplification');
-					}
+				}
 				
 			});
 			_instance.dialog_simplify.tabs({
@@ -108,7 +99,6 @@ var taeUIPopup = (function () {
 						if(!!_instance.selectedText) {
 							ui.newPanel["0"].innerHTML = '<p>Loading...</p>';
 							taeEngine.getInstance().getExplanations(_instance.selectedText, cb, errCb);
-							if (_instance.dialogOpened) _instance.logger().logAction(simpaticoEservice, 'viewsimp');
 						} else {
 							ui.newPanel["0"].innerHTML = '<p>'+_instance.labels.notextMessage+'</p>';
 						}
@@ -117,7 +107,6 @@ var taeUIPopup = (function () {
 						if(!!_instance.selectedText) {
 							ui.newPanel["0"].innerHTML = '<p>Loading...</p>';
 							taeEngine.getInstance().getSimplifiedText(_instance.selectedText, cb, errCb);
-							if (_instance.dialogOpened) _instance.logger().logAction(simpaticoEservice, 'viewesyntsimp');
 						} else {
 							ui.newPanel["0"].innerHTML = '<p>'+_instance.labels.notextMessage+'</p>';
 						}
@@ -126,7 +115,6 @@ var taeUIPopup = (function () {
 						if(!!_instance.selectedText) {
 							ui.newPanel["0"].innerHTML = '<p>Loading...</p>';
 							taeEngine.getInstance().getDefinitions(_instance.selectedText, cb, errCb);
-							if (_instance.dialogOpened) _instance.logger().logAction(simpaticoEservice, 'viewedef');
 						} else {
 							ui.newPanel["0"].innerHTML = '<p>'+_instance.labels.notextMessage+'</p>';
 						}
@@ -135,7 +123,6 @@ var taeUIPopup = (function () {
 						if(!!_instance.selectedText) {
 							ui.newPanel["0"].innerHTML = '<p>Loading...</p>';
 							taeEngine.getInstance().wikipedia(_instance.selectedText, cb, errCb);
-							_instance.logger().logAction(simpaticoEservice, 'viewewiki');
 						} else {
 							ui.newPanel["0"].innerHTML = '<p>'+_instance.labels.notextMessage+'</p>';
 						}
@@ -172,10 +159,8 @@ var taeUIPopup = (function () {
 			var errCb = setError('tab-0');
 			if (_instance.selectedText && _instance.selectedText.word) {
 				document.getElementById('tab-0').innerHTML = '<p>Loading...</p>';
-				_instance.logger().logWord(simpaticoEservice,  _instance.selectedText.word);
 			} else if (_instance.selectedText && _instance.selectedText.text) {
 				document.getElementById('tab-0').innerHTML = '<p>Loading...</p>';
-				_instance.logger().logFreetext(simpaticoEservice,  _instance.selectedText.text);
 				taeEngine.getInstance().getSimplifiedText(_instance.selectedText, cb, errCb);
 			} else {
 				document.getElementById('tab-0').innerHTML = '<p>'+_instance.labels.notextMessage+'</p>';
@@ -284,15 +269,12 @@ var taeUIPopup = (function () {
 					$('#tab-synt-simp-tab').hide();
 				}
 				$('.simpatico-label-wiki').click(function(evt){
-					_instance.logger().logAction(simpaticoEservice, 'dowiki', evt.currentTarget.text);
 					return true;
 				});
 				$('.simpatico-label-def').mouseover(function(evt){
-					_instance.logger().logAction(simpaticoEservice, 'dodef', evt.currentTarget.text);
 					return true;
 				});
 				$('.simpatico-label-simp').mouseover(function(evt){
-					_instance.logger().logAction(simpaticoEservice, 'dosimp', evt.currentTarget.text);
 					return true;
 				});
 			}

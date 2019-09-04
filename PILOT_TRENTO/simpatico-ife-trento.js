@@ -46,14 +46,7 @@ function initFeatures() {
     redirect: 'https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/logincb.html',
     greeting: 'ACCEDI A SIMPATICO'
   });
-  
-  // Init the LOG component (see log-core.js)
-  // - endpoint: the main URL of the used LOG instance
-  // - testMode: true if the data should not be sent to the LOG component
-  logCORE.getInstance().init({
-	  testMode: !logEnabled(),
-	  endpoint: "https://simpatico.smartcommunitylab.it/simpatico-logs/api"
-  });
+
 
   // Init the Citizenpedia component (see ctz-ui.js)
   // - endpoint: the main URL of the used Citizenpedia instance
@@ -216,35 +209,6 @@ function initFeatures() {
                    },
                    exclusive: true
                  },
-//                    { // CPD: procedure model
-//                        id: 'process',
-//                        imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/diagram.png",
-//                        imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/diagram.png",
-//                        alt: "Procedura amministrativa",
-//                        // Ad-hoc css classes to define the enabled/disabled styles
-//                        styleClassEnabled: "simp-bar-btn-active",
-//                        styleClassDisabled: "simp-bar-btn-inactive",
-//                        label: 'Procedura',
-//                        isEnabled: function() { return false; },
-//                        enable: function() { citizenpediaUI.getInstance().openDiagram(); },
-//                        disable: function() {  }
-//                      },                    
-
-//                  { // SF: session feedback
-//                      id: 'sf',
-//                      imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/feedback.png",
-//                      imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/feedback.png",
-//                      alt: "La tua opinione",
-//                      // Ad-hoc css classes to define the enabled/disabled styles
-//                      styleClassEnabled: "simp-bar-btn-active",
-//                      styleClassDisabled: "simp-bar-btn-inactive",
-//                      label: 'Feedback',
-//                      isEnabled: function() { return false; },
-//                      enable: function() { sfUI.getInstance().showSF(); },
-//                      disable: function() { sfUI.getInstance().hideSF(); },
-//                      exclusive: true
-//                    }
-             
             ];
   
 }//initFeatures()
@@ -424,15 +388,6 @@ document.addEventListener('DOMContentLoaded', function () {
   checkShowTutorial();
 });
 
-window.addEventListener('beforeunload', function (e) {
-  logCORE.getInstance().setSyncMode();	
-  logCORE.getInstance().ifeLogger.sessionEnd(simpaticoEservice);
-  if (window.simpaticoForm) {
-      // log end of session
-	  logCORE.getInstance().ifeLogger.formEnd(simpaticoEservice, simpaticoForm);
-  }
-});
-
 dialog_tutorial = null;
 dialog_step = 0;
 function checkShowTutorial() {
@@ -480,13 +435,8 @@ function closeTutorial() {
 }
 function nextTutorial() {
 	dialog_step++;
-	// in prod skip CDV for the moment
-	if (isProd() && dialog_step == 4) {
-		nextTutorial();
-		return;
-	}
 	$('#tutorialcontent').html(tutorialContent(dialog_step));
-	if (dialog_step == 5) {
+	if (dialog_step == 4) {
 		$('#tutorialnext').hide();
 	}
 }
@@ -497,9 +447,7 @@ function tutorialContent(step) {
 	case 1: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/forms.png"></td><td width="100%">La funzionalità COMPILAZIONE GUIDATA ti accompagna passo-passo nella compilazione del modulo online.</td></tr></table>';
 	case 2: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/citizenpedia.png"></td><td width="100%">La funzionalità DOMANDE E RISPOSTE ti permette di leggere e/o inserire domande legate a specifiche sezioni del servizio.</td></tr></table>';
 	case 3: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/enrich.png"></td><td width="100%">La funzionalità SEMPLIFICAZIONE TESTO mette a disposizione strumenti per meglio comprendere le frasi nel modulo. Per attivarla devi selezionare il testo da semplificare e cliccare sull\'icona.</td></tr></table>';
-	case 4: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/cdv.png"></td><td width="100%">La funzionalità DATI PERSONALI ti consente di salvare e recuperare in altri moduli le informazioni che hai inserito (es. nucleo familiare).</td></tr></table>';
-	case 5: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/diagram.png"></td><td width="100%">La funzionalità PROCEDURA ti permette di avere uno sguardo di insieme dei passi previsti per l’attivazione e l’utilizzo del servizio.</td></tr></table>';
-//	case 6: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/feedback.png"></td><td width="100%">La funzione FEEDBACK ti consente di esprimere in ogni momento una valutazione rispetto alle funzionalità di SIMPATICO.</td></tr></table>';
+	case 4: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/diagram.png"></td><td width="100%">La funzionalità PROCEDURA ti permette di avere uno sguardo di insieme dei passi previsti per l’attivazione e l’utilizzo del servizio.</td></tr></table>';
 	}
 }
 	
