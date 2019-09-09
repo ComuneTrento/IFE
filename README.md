@@ -1,5 +1,5 @@
 # Interactive Front-End
-The Interactive Front-End component (IFE) is the main component which dialogs with SIMPATICO users meanwhile they are interacting with a Public Administration e-service. Several features of the SIMPATICO platform could be selected and used through this component.
+The Interactive Front-End component (IFE) is the main component which dialogs with users meanwhile they are interacting with a Public Administration e-service. Several features of the platform could be selected and used through this component.
 Features:
  - **Text Adaptation**: *Text simplification* of the paragraphs and of the text selected by the user and *terms definitions* 
  - **Workflow Adaptation**: simplification and guidance for the form compilation
@@ -7,7 +7,7 @@ Features:
  - **Collaborative Process Design**: get a *diagram describing* the corresponding e-service
  - **Authoring Support Tool**: add support for the text analysis to the editors
 
-IFE is a group of JavaScript libraries that runs in a web browser and enables to apply the simpatico enhancement features over the existing electronic services.
+IFE is a group of JavaScript libraries that runs in a web browser and enables to apply the enhancement features over the existing electronic services.
 
 ## Content
 - [1. Usage](#1-usage)
@@ -21,26 +21,26 @@ Depending of the features, different JS Libraries should be selected.
 
 | File | Feature | Mandatory | Required Component | Description |
 | :--- | :--- | :---: | :---: | :--- |
-|  *simpatico-auth.js* | **Authentication**  | Yes | [AAC](https://github.com/SPRINT-Project/aac) |The Authentication and Authorization Control Module client connected to the SIMPATICO **AAC** module |
+|  *simpatico-auth.js* | **Authentication**  | Yes | [AAC](https://github.com/SPRINT-Project/aac) |The Authentication and Authorization Control Module client connected to the **AAC** module |
 | *ctz-ui.js* and *ctz-core.js* | **Questions and Diagrams**  | No | [Citizenpedia](https://github.com/SIMPATICOProject/citizenpedia)  | The Citizenpedia Component client which exposes questions related to the e-service, it enables users to ask new ones and search a diagram which represents the current e-service |
-| *tae-ui.js* and *tae-core.js* / *tae-ui-popup.js* and *tae-core-popup.js* | **Text Adaptation**  | No | [TAE/WAE](https://github.com/SPRINT-Project/simpatico-adaptation-engines)  | The Text Adaptation Engine Component client which exposes text simplifications and complex words definitions and synonyms to ease the e-service understanding  |
-| *wae-ui.js* and *wae-core.js* | **Workflow Adaptation**  | No | [TAE/WAE](https://github.com/SPRINT-Project/simpatico-adaptation-engines)  | The Workflow Adaptation Engine Component client which exposes the workflow simplification and adaptation functionality  |
+| *tae-ui.js* and *tae-core.js* / *tae-ui-popup.js* and *tae-core-popup.js* | **Text Adaptation**  | No | [TAE/WAE](https://github.com/SPRINT-Project/adaptation-engines)  | The Text Adaptation Engine Component client which exposes text simplifications and complex words definitions and synonyms to ease the e-service understanding  |
+| *wae-ui.js* and *wae-core.js* | **Workflow Adaptation**  | No | [TAE/WAE](https://github.com/SPRINT-Project/adaptation-engines)  | The Workflow Adaptation Engine Component client which exposes the workflow simplification and adaptation functionality  |
 
 The integration and configuration of these components is specific to the deployment environment. Basic setup 
-consists of instrumenting a SIMPATICO toolbar, where the access to the SIMPATICO instruments is 
+consists of instrumenting a toolbar, where the access to the instruments is 
 granted to the authenticated users. See the pilot-specific examples on how the tools and toolbars
 are constructed. These examples configure the components and toolbars via ``simpatico-ife.js`` script.
 
 In order to integrate IFE into a e-service Web page, the following steps should be performed:
 - install and configure the platform components required by IFE (see the table above);
-- instrument the e-service Web page with the scripts/style files in order to enable and configure the SIMPATICO toolbar;
-- configure the modules used bt the SIMPATICO toolbar: AUTH, TAE, WAE, Citizenpedia.
+- instrument the e-service Web page with the scripts/style files in order to enable and configure the toolbar;
+- configure the modules used bt the toolbar: AUTH, TAE, WAE, Citizenpedia.
 
 ## 2. Instrumenting E-service Web Page.
 
 ### Injection of JS Libraries
-TO enable SIMPATICO toolbar for a specific e-service, the Web page of the e-service should include the reference 
-to the SIMPATICO JavaScript libraries according to the table defined above. For example: 
+TO enable toolbar for a specific e-service, the Web page of the e-service should include the reference 
+to the JavaScript libraries according to the table defined above. For example: 
 
 ```html
     <script src="js/ctz-ui.js"></script>
@@ -66,7 +66,7 @@ Additionally, it is possible to include and customize the CSS styles for the Sim
 
 ### Global variables
 
-SIMPATICO tools rely on a set of globally available variables that defines properties specific to the current e-service Web page.
+The tools rely on a set of globally available variables that defines properties specific to the current e-service Web page.
 These properties include:
 
 * **simpaticoEservice** (required): It contains the unique id of the enhanced e-service.
@@ -105,7 +105,7 @@ To configure AAC in IFE it is necessary to define the properties of the authMana
     clientID: 'A0A0A0A0-A0A0-A0A0-A0A0-A0A0A0A0A0A0',
     authority: "google",
     redirect: 'https://my-callback-endpoint.com/',
-    greeting: 'ACCESS SIMPATICO TOOLS'
+    greeting: 'ACCESS TOOLS'
   });
 ```
 Parameters:
