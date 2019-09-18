@@ -1,0 +1,75 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+name: IFE
+applicationSuite: SPRINT
+url: 'https://github.com/SPRINT-Project/IFE'
+releaseDate: '2019-09-09'
+isBasedOn: 'https://github.com/SIMPATICOProject/IFE'
+softwareVersion: 1.1.1
+developmentStatus: stable
+softwareType: standalone/backend
+platforms:
+  - windows
+  - mac
+  - linux
+categories:
+  - content-management
+  - knowledge-management
+  - digital-citizenship
+maintenance:
+  type: none
+  contacts:
+    - name: Marco Pistore
+      email: pistore@fbk.eu
+      affiliation: Fondazione Bruno Kessler
+legal:
+  license: Apache-2.0
+  mainCopyrightOwner: 'Smart Community Lab, FBK and Comune di Trento'
+  repoOwner: 'Smart Community Lab, FBK and Comune di Trento'
+intendedAudience:
+  scope:
+    - government
+  countries:
+    - it
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - it
+it:
+  riuso:
+    codiceIPA: c_l378
+  conforme:
+    lineeGuidaDesign: false
+    misureMinimeSicurezza: true
+  piattaforme:
+    spid: true
+description:
+  it:
+    genericName: Interactive Front-End
+    apiDocumentation: 'https://github.com/SPRINT-Project/IFE'
+    shortDescription: >-
+      Interactive Front-End: semplifica l'integrazione in un portale delle
+      funzioni avanzate messe a riuso dal progetto SPRINT
+    longDescription: >
+      Questo tool fa parte della famiglia di diversi strumenti messi a
+      disposizione dal progetto SPRINT: Adaptation Engine, IFE, CPD e AAC.  Il
+      progetto SPRINT intende predisporre un kit che valorizza e porta in riuso
+      alcuni componenti sviluppanti dal progetto SIMPATICO.  
+
+
+      Questo tool, derivato dal progetto SIMPATICO,  permette l’integrazione
+      della piattaforma e dei tools messi in riuso dal progetto SPRINT nel
+      sistema ospite. Si tratta di un software (javascript) installato
+      direttamente nel codice del e-service o dell’e-service description che
+      funge da proxy tra l'utente e la piattaforma Simpatico.  L’IFE fornisce
+      un'interfaccia utente minima (ad es. un pop-up con pulsanti) integrata con
+      gli e-service esistenti. Utilizzando questa interfaccia, l’utente ha
+      accesso alle funzionalità evolute messe a disposizione dai tool: TAE, WAE,
+      QAE e CPD. 
+    features:
+      - Proxy to Text Simplification
+      - Proxy to Workflow Simplification
+      - Proxy to Text Complexity Analysis
