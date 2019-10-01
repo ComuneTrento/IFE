@@ -10,17 +10,18 @@ releaseDate: '2019-09-09'
 isBasedOn: 'https://github.com/SIMPATICOProject/IFE'
 softwareVersion: 1.1.1
 developmentStatus: stable
-softwareType: standalone/backend
+softwareType: library
 platforms:
   - windows
   - mac
   - linux
 categories:
   - content-management
-  - knowledge-management
   - digital-citizenship
+usedBy:
+  - Comune di Trento
 maintenance:
-  type: none
+  type: internal
   contacts:
     - name: Marco Pistore
       email: pistore@fbk.eu
@@ -44,6 +45,8 @@ it:
   conforme:
     lineeGuidaDesign: false
     misureMinimeSicurezza: true
+    modelloInteroperabilita: true
+    gdpr: false
   piattaforme:
     spid: true
 description:
@@ -73,3 +76,6 @@ description:
       - Proxy to Text Simplification
       - Proxy to Workflow Simplification
       - Proxy to Text Complexity Analysis
+      - Proxy to Collaborative Procedure Designer
+      - Proxy to Citizenpedia-QAE
+    documentation: 'https://github.com/SPRINT-Project/IFE/doc'
