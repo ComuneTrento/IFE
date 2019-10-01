@@ -4,11 +4,11 @@ Source: https://github.com/SPRINT-Project/IFE
 
 Files: *
 Copyright: 2018, Universidad de Deusto
-           2019 Smart Community Lab, FBK
+           2019 Smart Community Lab, FBK and Comune di Trento
 License: MIT
  Copyright for portions of IFE are held by Universidad de Deusto, 2018 
  as part of SIMPATICO project. All other copyright for IFE are 
- held by Smart Community Lab, 2019.
+ held by Smart Community Lab, FBK and Comune di Trento.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
