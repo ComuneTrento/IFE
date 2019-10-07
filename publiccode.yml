@@ -27,7 +27,7 @@ maintenance:
       email: pistore@fbk.eu
       affiliation: Fondazione Bruno Kessler
 legal:
-  license: Apache-2.0
+  license: MIT
   mainCopyrightOwner: 'Smart Community Lab, FBK and Comune di Trento'
   repoOwner: 'Smart Community Lab, FBK and Comune di Trento'
 intendedAudience:
@@ -57,21 +57,22 @@ description:
       Interactive Front-End: semplifica l'integrazione in un portale delle
       funzioni avanzate messe a riuso dal progetto SPRINT
     longDescription: >
-      Questo tool fa parte della famiglia di diversi strumenti messi a
-      disposizione dal progetto SPRINT: Adaptation Engine, IFE, CPD e AAC.  Il
-      progetto SPRINT intende predisporre un kit che valorizza e porta in riuso
-      alcuni componenti sviluppanti dal progetto SIMPATICO.  
+      This tool is provided on behalf of the SPRINT project. SPRINT project
+      intends to prepare a kit that enhances and re-uses some components
+      developed by the SIMPATICO project.
 
 
-      Questo tool, derivato dal progetto SIMPATICO,  permette l’integrazione
-      della piattaforma e dei tools messi in riuso dal progetto SPRINT nel
-      sistema ospite. Si tratta di un software (javascript) installato
-      direttamente nel codice del e-service o dell’e-service description che
-      funge da proxy tra l'utente e la piattaforma Simpatico.  L’IFE fornisce
-      un'interfaccia utente minima (ad es. un pop-up con pulsanti) integrata con
-      gli e-service esistenti. Utilizzando questa interfaccia, l’utente ha
-      accesso alle funzionalità evolute messe a disposizione dai tool: TAE, WAE,
-      QAE e CPD. 
+      This component is a verticalization of the interactive Front-END (IFE),
+      derived from the SIMPATICO project. IFE simplifies the integration of
+      SIMPATICO tools in a third platform.  In particular, IFE is a software
+      (javascript) installed directly in the e-service or e-service description
+      code that acts as a proxy between the user and the Sympathetic platform.
+      The IFE provides a minimal user interface (eg a pop-up with buttons)
+      integrated with existing e-services. 
+
+
+      Using this component, the user has access to the SIMPATICO/SPRINT advanced
+      functions and tools: TAE, WAE, QAE and CPD.
     features:
       - Proxy to Text Simplification
       - Proxy to Workflow Simplification
