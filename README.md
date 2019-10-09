@@ -1,4 +1,101 @@
-# Interactive Front-End
+# SPRINT - Interactive Frint-End (IFE)
+
+
+Insieme di librerie Javascritp che abilitano l'integrazione degli strumenti di semplificazione e di supporto all'interazione in un generrico sistema e/o in un servizio digitale.
+
+# Descrizione
+
+Il progetto SPRINT intende valorizzare alcuni risultati del progetto SIMPATICO (https://www.simpatico-project.eu/) volti a migliorare e semplificare l’interazione tra cittadino e servizi online. L’obiettivo del progetto è di creare un kit che permetta una facile integrazione di alcune funzioni avanzate di SIMPATICO in un generico portale della Pubblica Amministrazione e/o in un servizio online. 
+
+L'Interactive Front-End (IFE), che fa parte della famiglia di tools messa in riuso, e' il componente che consente di integrare le fuzioni di adattamento del testo, di adattamento del workflow e di supporto alla misura della complessita' di un testo in un portale e/o in un servizio digitale terzi. Per fare questo utilizza i sotto componeni Wrokflow Adaptatione Engine (WAE), Text Adaptation Engine (TAE), Collaborative Procedure Designer (CPD) e Citizenpedia-Q&A (QAE). 
+
+Questa breve note intende evidenziare le funzionalita' messe a disposizione dal tool lato utente finale. La descrizione completa e tecnica di utilizzo dei diversi componenti si trova nel documento [di progetto](dic/BP-OR-AP-06_v1.0.pdf)
+
+## Workflow Adaptation Engine (WAE)
+
+Il Workflow Adaptation Engine è responsabile di adattare e semplificare l’interazione con gli e-service. Una volta individuati i diversi blocchi interattivi dell’e-service, consente di modificarne e semplificarne il flusso di compilazione. Il WAE permette di: 
+ * suddividere l'e-service (template HTML) in blocchi di interazione e presentare gli stessi all'utente in base alle dipendenze tra essi ed allo stato della compilazione (vedi (1) in figura).
+ * presentare all'utente una sezione di suggerimenti vicino a ciascun blocco di interazione per fare capire meglio cosa inserire nei diversi campi (vedi (12) in figura).
+ * presentare all'utente una sezione dove vengono presentate le domande e risposte presenti nel modulo QAE relative al blocco selezionato (vedi (3) in figura).
+ * presentare all'utente una sezione che visualizza l’insieme dei blocchi interattivi da cui è composto il servizio online (vedi (4) in figura).
+
+ ![WAE](doc/wae.3.png)
+
+Per applicare la workflow adaptation ad un e-service occorre quindi marcare i blocchi interattivi all’interno del documento digitale e codificare le dipendenze tra gli stessi in un Workflow Adaptation Model. Quando attivato, il WAE recupera le informazioni dal Workflow Adaptation Model, estrae i vari blocchi interattivi e applica le regole di esecuzione/dipendenza.
+
+## Text Adaptation Engine (TAE)
+
+Il Text Adaptation Engine permette di adattare/modificare il testo per migliorarne leggibilità e comprensione. 
+
+In particolare TAE permette di: 
+ * dato una parola consente di arricchirla con informazioni atte a migliorarne la comprensione;
+
+ ![Miglioramento testo](doc/tae.1.png)
+
+ * data una frase consente di rivederla nella forma per renderla più leggibile e comprensibile.
+
+  ![Semplificazione lessicale](doc/tae.2.png)
+
+## Collaborative Process Designer (CPD)
+
+Il CPD e' uno strumento che consente di creare rappresentazioni grafiche di procedure pubbliche sotto forma di diagrammi. Questi diagrammi possono rappresentare sia servizi elettronici che servizi non digitali che i cittadini devono utilizzare per raggiungere un obiettivo specifico.
+
+ ![CPD interfaccia](doc/cpd.1.png)
+
+In particolare il CPD permette di:
+ * creare e modificare un diagramma del flusso di lavoro, utilizzando simboli simili a UML.
+ * Social/collaborative: consente di pubblicare commenti sul diagramma.
+
+## Citizenpeda-QAE
+
+Si tratta di una particolare funzione di Citizenpedia che consente di pubblicare, classificare e risolvere domande da parte degli utilizzatori finali sugli e-services. Nello specifico le domande e risposte relative ad un servizio vengono presentate all’utente direttamente nella pagina del servizio tramite l’IFE. Il QAE è costituito da un'interfaccia web che abilita l'interazione con gli utenti (cittadini e dipendenti pubblici) da qualsiasi tipo di dispositivo, ad es. smartphone o PC. 
+È definito il ruolo di moderatore. Il moderatore è responsabile della gestione e del mantenimento della qualità delle informazioni raccolte.
+
+ ![QAE interfaccia](doc/qae.1.png)
+
+## Altri riferimenti
+
+Per maggiori informazioni è possibile consultare:
+ * documento [di progetto](dic/BP-OR-AP-06_v1.0.pdf)
+
+## Product status
+
+Il prodotto è stabile e production ready e usato in produzione dal Comune di Trento. Lo sviluppo avviene sia su richiesta degli Enti utilizzatori, sia su iniziativa autonoma del maintainer.
+
+## Struttura del repository
+
+Il repository è organizzato con una struttura di directory tipica dei progetti Javascript.
+ * nella cartella js sono presenti le librerie Jasvascript sviluppate
+ * nella cartella css sono presenti le librerie css sviluppate
+ * nella cartella PILOT_TRENTO sono presenti degli esempi configurazioni ed utilizzo del sistema sviluppato per il Comune di Trento 
+* Nella directory doc e' presente la documentazione del progetto SPRINT
+
+## Copyright:
+
+  license: MIT
+  mainCopyrightOwner: 'Smart Community Lab, FBK and Comune di Trento'
+  repoOwner: 'Smart Community Lab, FBK and Comune di Trento'
+
+## Soggetti incaricati del mantenimento
+
+  name: Marco Pistore
+  email: pistore@fbk.eu
+  affiliation: Fondazione Bruno Kessler
+
+## Segnalazioni di sicurezza
+Le segnalazioni di sicurezza vanno inviate all'indirizzo pistore@fbk.eu
+
+## Prerequisiti e dipendenze
+
+ * TAE nel caso si intenda utilizzarne le funzioni
+ * WAE nel caso si intenda utilizzarne le funzioni
+ * CPD nel caso si intenda utilizzarne le funzioni
+ * Citizenpedia-QAE nel caso si intenda utilizzarne le funzioni
+ * AAC nel caso si intenda abilitare l'autenticazione utente per l'accesso alle funzionalita' supportate
+
+
+# Technical Documentation
+
 The Interactive Front-End component (IFE) is the main component which dialogs with users meanwhile they are interacting with a Public Administration e-service. Several features of the platform could be selected and used through this component.
 Features:
  - **Text Adaptation**: *Text simplification* of the paragraphs and of the text selected by the user and *terms definitions* 
