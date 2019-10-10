@@ -9,7 +9,7 @@ Il progetto SPRINT intende valorizzare alcuni risultati del progetto SIMPATICO (
 
 L'Interactive Front-End (IFE), che fa parte della famiglia di tools messa in riuso, e' il componente che consente di integrare le fuzioni di adattamento del testo, di adattamento del workflow e di supporto alla misura della complessita' di un testo in un portale e/o in un servizio digitale terzi. Per fare questo utilizza i sotto componeni Wrokflow Adaptatione Engine (WAE), Text Adaptation Engine (TAE), Collaborative Procedure Designer (CPD) e Citizenpedia-Q&A (QAE). 
 
-Questa breve note intende evidenziare le funzionalita' messe a disposizione dal tool lato utente finale. La descrizione completa e tecnica di utilizzo dei diversi componenti si trova nel documento [di progetto](dic/BP-OR-AP-06_v1.0.pdf)
+Questa breve note intende evidenziare le funzionalita' messe a disposizione dal tool lato utente finale. La descrizione completa e tecnica di utilizzo dei diversi componenti si trova nel documento [di progetto](doc/BP-OR-AP-06_v1.0.pdf)
 
 ## Workflow Adaptation Engine (WAE)
 
