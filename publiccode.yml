@@ -5,7 +5,7 @@
 publiccodeYmlVersion: '0.2'
 name: IFE
 applicationSuite: SPRINT
-url: 'https://github.com/SPRINT-Project/IFE'
+url: 'https://github.com/ComuneTrento/SPRINT-IFE'
 releaseDate: '2019-09-09'
 isBasedOn: 'https://github.com/SIMPATICOProject/IFE'
 softwareVersion: 1.0.0
@@ -52,7 +52,7 @@ it:
 description:
   it:
     genericName: Interactive Front-End
-    apiDocumentation: 'https://github.com/SPRINT-Project/IFE'
+    apiDocumentation: 'https://github.com/ComuneTrento/SPRINT-IFE'
     shortDescription: >-
       Interactive Front-End: semplifica l'integrazione in un portale delle
       funzioni avanzate messe a riuso dal progetto SPRINT
@@ -79,4 +79,4 @@ description:
       - Proxy to Text Complexity Analysis
       - Proxy to Collaborative Procedure Designer
       - Proxy to Citizenpedia-QAE
-    documentation: 'https://github.com/SPRINT-Project/IFE/doc'
+    documentation: 'https://github.com/ComuneTrento/SPRINT-IFE/doc/documentazione.md'
