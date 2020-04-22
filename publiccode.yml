@@ -3,80 +3,86 @@
 # More info at https://github.com/italia/publiccode.yml
 
 publiccodeYmlVersion: '0.2'
-name: IFE
 applicationSuite: SPRINT
-url: 'https://github.com/ComuneTrento/SPRINT-IFE'
-releaseDate: '2019-09-09'
-isBasedOn: 'https://github.com/SIMPATICOProject/IFE'
-softwareVersion: 1.0.0
-developmentStatus: stable
-softwareType: library
-platforms:
-  - windows
-  - mac
-  - linux
 categories:
   - content-management
   - digital-citizenship
-usedBy:
-  - Comune di Trento
-maintenance:
-  type: internal
-  contacts:
-    - name: Marco Pistore
-      email: pistore@fbk.eu
-      affiliation: Fondazione Bruno Kessler
-legal:
-  license: MIT
-  mainCopyrightOwner: 'Smart Community Lab, FBK and Comune di Trento'
-  repoOwner: 'Smart Community Lab, FBK and Comune di Trento'
-intendedAudience:
-  scope:
-    - government
-  countries:
-    - it
-localisation:
-  localisationReady: true
-  availableLanguages:
-    - it
-it:
-  riuso:
-    codiceIPA: c_l378
-  conforme:
-    lineeGuidaDesign: false
-    misureMinimeSicurezza: true
-    modelloInteroperabilita: true
-    gdpr: false
-  piattaforme:
-    spid: true
 description:
   it:
-    genericName: Interactive Front-End
     apiDocumentation: 'https://github.com/ComuneTrento/SPRINT-IFE'
-    shortDescription: >-
-      Interactive Front-End: semplifica l'integrazione in un portale delle
-      funzioni avanzate messe a riuso dal progetto SPRINT
-    longDescription: >
-      This tool is provided on behalf of the SPRINT project. SPRINT project
-      intends to prepare a kit that enhances and re-uses some components
-      developed by the SIMPATICO project.
-
-
-      This component is a verticalization of the interactive Front-END (IFE),
-      derived from the SIMPATICO project. IFE simplifies the integration of
-      SIMPATICO tools in a third platform.  In particular, IFE is a software
-      (javascript) installed directly in the e-service or e-service description
-      code that acts as a proxy between the user and the Sympathetic platform.
-      The IFE provides a minimal user interface (eg a pop-up with buttons)
-      integrated with existing e-services. 
-
-
-      Using this component, the user has access to the SIMPATICO/SPRINT advanced
-      functions and tools: TAE, WAE, QAE and CPD.
+    documentation: >-
+      https://github.com/ComuneTrento/SPRINT-IFE/blob/master/doc/documentazione.md
     features:
       - Proxy to Text Simplification
       - Proxy to Workflow Simplification
       - Proxy to Text Complexity Analysis
       - Proxy to Collaborative Procedure Designer
       - Proxy to Citizenpedia-QAE
-    documentation: 'https://github.com/ComuneTrento/SPRINT-IFE/blob/master/doc/documentazione.md'
+    genericName: Interactive Front-End
+    longDescription: >
+      L’Interactive Front-End (IFE) fa parte del progetto SPRINT che intende
+      valorizzare alcuni risultati del progetto SIMPATICO
+      (https://www.simpatico-project.eu/) volti a migliorare e semplificare
+      l’interazione tra cittadino e servizi online. 
+
+
+      L’obiettivo di SPRINT è di creare un kit che permetta una facile
+      integrazione di alcune funzioni avanzate di SIMPATICO in un generico
+      portale della Pubblica Amministrazione e/o in un servizio online. 
+
+
+      L'Interactive Front-End (IFE), che fa parte della famiglia di tools messa
+      in riuso, e' il componente che consente di integrare le fuzioni di
+      adattamento del testo, di adattamento del workflow e di supporto alla
+      misura della complessita' di un testo in un portale e/o in un servizio
+      digitale terzi. Per fare questo utilizza i sotto componeni Wrokflow
+      Adaptation Engine (WAE), Text Adaptation Engine (TAE), Collaborative
+      Procedure Designer (CPD) e Citizenpedia-Q&A (QAE). 
+    shortDescription: Front-end per la semplificazione dei servizi online
+developmentStatus: stable
+intendedAudience:
+  countries:
+    - it
+  scope:
+    - government
+isBasedOn:
+  - 'https://github.com/SIMPATICOProject/IFE'
+it:
+  conforme:
+    gdpr: false
+    lineeGuidaDesign: false
+    misureMinimeSicurezza: true
+    modelloInteroperabilita: true
+  countryExtensionVersion: '0.2'
+  piattaforme:
+    anpr: false
+    cie: false
+    pagopa: false
+    spid: true
+  riuso:
+    codiceIPA: c_l378
+legal:
+  license: MIT
+  mainCopyrightOwner: 'Smart Community Lab, FBK and Comune di Trento'
+  repoOwner: 'Smart Community Lab, FBK and Comune di Trento'
+localisation:
+  availableLanguages:
+    - it
+  localisationReady: true
+maintenance:
+  contacts:
+    - affiliation: Fondazione Bruno Kessler
+      email: pistore@fbk.eu
+      name: Marco Pistore
+  type: internal
+name: Interactive Front-End (IFE)
+platforms:
+  - windows
+  - mac
+  - linux
+releaseDate: '2019-09-09'
+softwareType: library
+softwareVersion: 1.0.0
+url: 'https://github.com/ComuneTrento/SPRINT-IFE'
+usedBy:
+  - Comune di Trento
