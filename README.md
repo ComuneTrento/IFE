@@ -1,4 +1,4 @@
-# SPRINT - Interactive Frint-End (IFE)
+# SPRINT - Interactive Front-End (IFE)
 
 
 Insieme di librerie Javascritp che abilitano l'integrazione degli strumenti di semplificazione e di supporto all'interazione in un generrico sistema e/o in un servizio digitale.
