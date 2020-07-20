@@ -7,19 +7,30 @@
 
 // It inits all the enabled features of IFE 
 function initFeatures() {
-
+	if (!window.simpaticoEserviceName) {
+		simpaticoEserviceName = '';
+	}
+	if (!window.simpaticoEserviceURL) {
+		simpaticoEserviceURL = window.location.origin + window.location.pathname;
+	}
+	if (!window.serviceName) {
+		serviceName = simpaticoEserviceName;
+	}
+	if (!window.serviceURL) {
+		serviceURL = simpaticoEserviceURL;
+	}
   // Init the Auth component (see simpatico-auth.js)
   // - endpoint: the main URL of the used AAC instance
   // - clientID: the IFE Client ID registered
   // - authority: the used authentication mechanism or null if many allowed
   // - redirect: url redirect (default is /IFE/login.html)
-  authManager.getInstance().init({
-    endpoint: 'https://tn.smartcommunitylab.it/aac', 
-    clientID: '8ab03990-d5dd-47ea-8fc6-c92a3b0c04a4',
-    authority: null,
-    redirect: 'https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/logincb.html',
-    greeting: 'ACCEDI A SIMPATICO'
-  });
+//  authManager.getInstance().init({
+//    endpoint: 'https://tn.smartcommunitylab.it/aac',
+//    clientID: '8ab03990-d5dd-47ea-8fc6-c92a3b0c04a4',
+//    authority: null,
+//    redirect: 'https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/logincb.html',
+//    greeting: 'ACCEDI A SIMPATICO'
+//  });
   
   // Init the Citizenpedia component (see ctz-ui.js)
   // - endpoint: the main URL of the used Citizenpedia instance
@@ -57,7 +68,8 @@ function initFeatures() {
     elementId: 'simp-bar-sw-tae-inline',
     synonimLabel:'Sinonimi',
     definitionLabel: 'Definizione',
-    simplifedTextLabel: 'Testo semplificato'
+    simplifedTextLabel: 'Testo semplificato',
+    questionsURL: "https://simpatico.smartcommunitylab.it/qae/questions",
   });
 
 
@@ -100,20 +112,20 @@ function initFeatures() {
                     enable: function() { citizenpediaUI.getInstance().openDiagram(); },
                     disable: function() { citizenpediaUI.getInstance().disable(); }
                   },
-                  {
-                    id: "simp-bar-sw-login",
-                    // Ad-hoc images to define the enabled/disabled images
-                    imageSrcEnabled: "./resources/images/access.png",
-                    imageSrcDisabled: "./resources/images/access.png",
-                    alt: "Entra",
-                    // Ad-hoc css classes to define the enabled/disabled styles
-                    styleClassEnabled: "simp-none", 
-                    styleClassDisabled: "simp-none",
-                    
-                    isEnabled: function() { return authManager.getInstance().isEnabled(); },
-                    enable: function() { authManager.getInstance().enable(); },
-                    disable: function() { authManager.getInstance().disable(); }
-                  },
+//                  {
+//                    id: "simp-bar-sw-login",
+//                    // Ad-hoc images to define the enabled/disabled images
+//                    imageSrcEnabled: "./resources/images/access.png",
+//                    imageSrcDisabled: "./resources/images/access.png",
+//                    alt: "Entra",
+//                    // Ad-hoc css classes to define the enabled/disabled styles
+//                    styleClassEnabled: "simp-none", 
+//                    styleClassDisabled: "simp-none",
+//                    
+//                    isEnabled: function() { return authManager.getInstance().isEnabled(); },
+//                    enable: function() { authManager.getInstance().enable(); },
+//                    disable: function() { authManager.getInstance().disable(); }
+//                  },
                   { // CITIZENPEDIA
                     id: "simp-bar-sw-citizenpedia",
                     // Ad-hoc images to define the enabled/disabled images
@@ -135,12 +147,11 @@ function initFeatures() {
 // It creates the HTML code corresponding to the button passed as parameter
 // - button: The button object stored in buttons
 function createButtonHTML(button) {
-  
   return '<li class="'+ button.styleClassDisabled +'" id="' + button.id + '" ' +'onclick="toggleAction(\'' + button.id + '\');"'+
                           '">'+
                           //'<a href="#">' +
-                          '<img ' + 
-                            'alt="' + button.alt + '" ' + 
+                          '<img ' +
+                            'alt="' + button.alt + '" ' +
                             'title="' + button.alt + '" ' +
                             'id="' + button.id + '-img" ' +
                             'src="' + button.imageSrcDisabled + '" ' +
@@ -384,7 +395,7 @@ function previousTutorial(){
     $('#tutorialPrevious').hide();
     $('#tutorialnext').hide();
     $('#learnMore').show();
-	}else if(dialog_step == 4){
+	}else if(dialog_step == 3){
     $('#tutorialPrevious').hide();
     $('#tutorialnext').hide();
     $('#tutorialesc').show();
@@ -399,7 +410,7 @@ function nextTutorial() {
   if (dialog_step == 1) {
     $('#tutorialPrevious').show();
   }
-  if (dialog_step == 4) {
+  if (dialog_step == 3) {
     $('#tutorialPrevious').hide();
     $('#tutorialnext').hide();
     $('#tutorialesc').show();
@@ -410,8 +421,8 @@ function tutorialContent(step) {
 	case 0: return '<p>Questo strumento migliora la tua esperienza con la Pubblica Amministrazione. Alcune funzionalità richiedono un account.</p>';
 	case 1: return '<table><tr><td><img src="./resources/images/textTool.png"></td><td width="100%">Semplificare un testo di difficile comprensione per trovare la definizione di termini complessi. Gli utenti registrati godono di suggerimenti personalizzati.</td></tr></table>';
 	case 2: return '<table><tr><td><img src="./resources/images/procedure.png"></td><td width="100%">Trova un riepilogo di questa procedura amministrativa.</td></tr></table>';
-	case 3: return '<table><tr><td><img src="./resources/images/access.png"></td><td width="100%">Memorizza i tuoi dati personali per compilare automaticamente moduli e ricevere suggerimenti personalizzati.</td></tr></table>';
-	case 4: return '<table><tr><td><img src="./resources/images/questions.png"></td><td width="100%">Trova le domande inviate da altri membri della comunità o invia le tue domande. Richiede di essere registrato.</td></tr></table>';
+//	case 3: return '<table><tr><td><img src="./resources/images/access.png"></td><td width="100%">Memorizza i tuoi dati personali per compilare automaticamente moduli e ricevere suggerimenti personalizzati.</td></tr></table>';
+	case 3: return '<table><tr><td><img src="./resources/images/questions.png"></td><td width="100%">Trova le domande inviate da altri membri della comunità o invia le tue domande. Richiede di essere registrato.</td></tr></table>';
 	// case 5: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/diagram.png"></td><td width="100%"></td></tr></table>';
 	// case 6: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/feedback.png"></td><td width="100%">La funzione FEEDBACK ti consente di esprimere in ogni momento una valutazione rispetto alle funzionalità di SIMPATICO.</td></tr></table>';
 	}
