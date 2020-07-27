@@ -1,0 +1,153 @@
+#headerdx img {
+    height: 50px;
+    margin: 10px;
+}
+
+#headerdx #logofbk {
+    height: 60px;
+}
+
+#headerdx {
+    text-align: right;
+}
+
+#titlerow {
+    padding-top: 130px;
+    background-image: url(images/comune.png);
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: top left;
+}
+
+#titlerow h1 img {
+    height: 60px;
+    margin-top: -5px;
+    margin-right: 30px;
+}
+
+#part1.inactive, #part2.inactive, #part3.inactive {
+    display: none;
+}
+
+#text-original-content {
+    line-height: 2em;
+}
+
+.sentence {
+    padding: 10px 5px;
+    border-radius: 3px;
+}
+
+.sentence .row-sentence {
+    font-size: 70%;
+    border-bottom: 1px dotted #ddd;
+    margin: 10px 0;
+    padding: 5px 3px 10px 3px;
+    background-color: #FFFFb4;
+    line-height: 1.4em;
+}
+
+.syn-word {
+    background-color: #6d94ac;
+}
+
+#difficulty-values-panel .title {
+    font-weight: bold;
+}
+
+.sentence .row-sentence .col-md-3 {
+    padding: 5px 0 0 0;
+}
+
+#text-original-ssimplifications .sentence {
+    margin-bottom: 3px;
+    border-bottom: 1px solid #ccc;
+}
+
+.too-long, .synt-simp-sent {
+    background-color: #FFFFb4;
+}
+
+.show-it, .show-es, .show-en {
+    display: none;
+}
+
+.tab-content {
+    border: 1px solid #ddd;
+    border-width: 0 1px 1px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 0 0 4px 4px;
+}
+
+.label-light {
+    color: #fff;
+    background-color: rgba(220, 53, 69, 0.61);
+}
+
+.simp-ff {
+    display: none;
+}
+
+#simp-none {
+    display: block;
+}
+
+#mother-language {
+    padding: 10px;
+    background-color: #ffb;
+}
+
+/* Bootstrap overwritten rules */
+
+.label {
+    font-size: 100% !important;
+    font-weight: normal !important;
+}
+
+/* Spinner */
+
+.synt-spinner {
+    display: none;
+}
+
+.spinner {
+    display: inline-block;
+    opacity: 0;
+    width: 0;
+
+    -webkit-transition: opacity 0.25s, width 0.25s;
+    -moz-transition: opacity 0.25s, width 0.25s;
+    -o-transition: opacity 0.25s, width 0.25s;
+    transition: opacity 0.25s, width 0.25s;
+}
+
+.has-spinner.active {
+    cursor: progress;
+}
+
+.has-spinner.active .spinner {
+    opacity: 1;
+    width: auto; /* This doesn't work, just fix for unkown width elements */
+}
+
+.has-spinner.btn-mini.active .spinner {
+    width: 10px;
+}
+
+.has-spinner.btn-small.active .spinner {
+    width: 13px;
+}
+
+.has-spinner.btn.active .spinner {
+    width: 16px;
+}
+
+.has-spinner.btn-large.active .spinner {
+    width: 19px;
+}
+
+body {
+    background-image: url(images/sfondo.png);
+    background-repeat: repeat-x;
+}
