@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Simpatico Authoring Tool</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
+
+    <link rel="stylesheet" href="../ast/switchery.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../ast/brat.css"/>
+    <script type="text/javascript" src="https://storage.googleapis.com/corenlp/js/brat/client/lib/head.load.min.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="../ast/brat.js"></script>
+    <script type="text/javascript" src="../js/ast.js"></script>
+    <script type="text/javascript" src="../ast/switchery.min.js"></script>
+
+
+    <!--<link href="lib/static/js/ladda/dist/ladda-themeless.min.css" rel="stylesheet">-->
+    <link href="css/styles-tn.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<div class="container">
+    <div class="row" id="titlerow">
+        <div class="col-md-6">
+            <h1>
+                Simpatico Authoring Tool
+            </h1>
+        </div>
+    </div>
+    <hr/>
+    <div id="part1">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Inserire un testo in italiano e premere il tasto blu:</p>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="text" class="col-sm-1 control-label">Testo</label>
+                        <div class="col-sm-11">
+                            <textarea id="text" class="form-control" rows="10"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text" class="col-sm-1 control-label">Esempi</label>
+                        <div class="col-sm-11">
+                            <select class="form-control" id="select_examples">
+                                <option value="">[Select]</option>
+                                <option value="Appostamenti di caccia realizzati secondo le disposizioni provinciali vigenti in materia di protezione della fauna selvatica ed esercizio della caccia, realizzati in difformità rispetto ai criteri e alle tipologie approvati dalla sottocommissione della CUP con riferimento alle relazioni con il contesto, alle forme e ai materiali da impiegare nella realizzazione. Il proprietario dichiara di essere a conoscenza l'autorizzazione paesaggistica è efficace per cinque anni dal rilascio. Se l'autorizzazione è necessaria per l'esecuzione di un intervento soggetto a permesso di costruire o a SCIA, la scadenza dell'autorizzazione paesaggistica coincide con quella del titolo abilitativo edilizio, anche nel caso di proroga del titolo. In ogni caso la domanda di permesso di costruire o la SCIA sono richieste o presentate, rispettivamente, entro un anno dal rilascio dell'autorizzazione paesaggistica.">
+                                    Difficile - Appostamenti di caccia realizzati secondo [...]
+                                </option>
+                                <option value="Un picchio e una pallina si trovavano in un cassetto in mezzo agli altri giocattoli, e il picchio propose: &quot;Visto che siamo insieme qui nel cassetto, perché non ci fidanziamo?&quot; Ma la palla, che era di cuoio marocchino e si credeva una signorina di buona società, nemmeno volle rispondere. Il giorno dopo il bambino che possedeva tutti i giocattoli ridipinse il picchio di rosso e di giallo, e ci piantò un chiodo d'ottone nel mezzo: che figurone che faceva adesso, soprattutto quando faceva la ruota. &quot;Guardami, adesso&quot;, disse alla pallina. &quot;Perché non ci fidanziamo? Tu salti, io ballo, siamo fatti l'uno per l'altra! Chi potrebbe essere più felice di noi?&quot; &quot;Davvero?&quot;, diceva la pallina, &quot;ma lo sai che mio padre e mia madre erano pantofole in marocchino, e che io ho un tappo in corpo!&quot; &quot;E allora? Io sono fatto di mogano, ed è stato il sindaco del paese a farmi! Lui ha un tornio, e si è divertito tantissimo!&quot; &quot;Mah... mi devo fidare?&quot;, disse la pallina. &quot;Che io sia frustato, se ho mai detto una bugia!&quot;, rispose il picchio. &quot;Dici bene, tu&quot;, disse la pallina, &quot;ma io sono già quasi fidanzata con un rondone! Ogni volta che mi lancio in aria, lui si affaccia dal nido e dice &quot;mi vuoi? Mi vuoi?&quot; Io ormai ho detto di sì nel mio cuore , e questo è quasi un mezzo fidanzamento! Comunque ti prometto che non ti dimenticherò mai!&quot; &quot;Sì, capirai!&quot;, disse il picchio, e non si rivolsero più la parola. Il giorno dopo la pallina fu tolta dal cassetto: il picchio la vide lanciarsi alta nell'aria, come un uccello, finché non scompariva.">
+                                    Facile - Un picchio e una pallina si trovavano in un cassetto [...]
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-1 col-sm-11">
+                            <button class="btn btn-primary has-spinner" type="button">
+                                <span class="spinner"><i class="icon-spin icon-refresh"></i></span>
+                                <span class="glyphicon glyphicon-cog"></span>
+                                Analizza testo
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="container"></div>    
+    <hr/>
+    <div class="row">
+        <div class="col-md-16">
+            <p class="text-center">
+                This interface uses free software.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#select_examples').change(function () {
+        $('#text').val($('#select_examples').val());
+    });
+    $('button.has-spinner').click(function () {
+        var text = $('#text').val();
+        ast.getInstance().process("https://simpatico.smartcommunitylab.it/simp-engines", text, document.getElementById('container'));
+    });
+
+</script>
+
+</body>
+</html>

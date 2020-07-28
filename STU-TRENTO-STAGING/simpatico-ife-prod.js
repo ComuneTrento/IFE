@@ -36,27 +36,6 @@ function initFeatures() {
 	if (!window.serviceURL) {
 		serviceURL = simpaticoEserviceURL;
 	}
-	
-  // Init the Auth component (see simpatico-auth.js)
-  // - endpoint: the main URL of the used AAC instance
-  // - clientID: the IFE Client ID registered
-  // - authority: the used authentication mechanism or null if many allowed
-  // - redirect: url redirect (default is /IFE/login.html)
-  authManager.getInstance().init({
-    endpoint: 'https://tn.smartcommunitylab.it/aac', 
-    clientID: '8ab03990-d5dd-47ea-8fc6-c92a3b0c04a4',
-    authority: null,
-    redirect: 'https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/logincb.html',
-    greeting: 'ACCEDI A SIMPATICO'
-  });
-  
-  // Init the LOG component (see log-core.js)
-  // - endpoint: the main URL of the used LOG instance
-  // - testMode: true if the data should not be sent to the LOG component
-  logCORE.getInstance().init({
-	  testMode: !logEnabled(),
-	  endpoint: "https://simpatico.smartcommunitylab.it/simpatico-logs/api"
-  });
 
   // Init the Citizenpedia component (see ctz-ui.js)
   // - endpoint: the main URL of the used Citizenpedia instance
@@ -73,7 +52,7 @@ function initFeatures() {
   // - questionSelectionFilters: filters for text selection to ask question for
   citizenpediaUI.getInstance().init({
     endpoint: 'https://simpatico.smartcommunitylab.it/qae',
-    cpdDiagramEndpoint: 'https://dev.smartcommunitylab.it/cpd/api/diagram/eService',
+    cpdDiagramEndpoint: 'https://simpatico.smartcommunitylab.it/cpd/api/diagram/eService',
     primaryColor: "#24BCDA",
     secondaryColor:"#D3F2F8",
     elementsToEnhanceClassName: "simpatico-query-and-answer",
@@ -116,8 +95,8 @@ function initFeatures() {
                   styleClassEnabled: "simp-bottomBar-btn-active",
                   styleClassDisabled: "simp-bottomBar-btn-inactive",
                   isEnabled: function() { return waeUI.getInstance().isEnabled(); },
-                  enable: function() { waeStarted = true; var idProfile = null; waeUI.getInstance().enableV2(idProfile); },
-                  disable: function() { waeStarted = false; waeUI.getInstance().disableV2(); },
+                  enable: function() { waeStarted = true; var idProfile = null; waeUI.getInstance().enableWithGuide(idProfile); },
+                  disable: function() { waeStarted = false; waeUI.getInstance().disableWithGuide(); },
                   text: "Guida",
                   simpBar:"bottom"
                 }
@@ -301,12 +280,12 @@ function initFeatures() {
       
         guideModalContainer.innerHTML=guideModalHTML;
         var idProfile = null; 
-        waeUI.getInstance().enableV2(idProfile);
+        waeUI.getInstance().enableWithGuide(idProfile);
     }
     $("#guideModal").toggle();
     $("#helpModal").toggle();
     if ($("#helpModal").is(":hidden")) {
-    	waeUI.getInstance().disable(true);
+    	waeUI.getInstance().disable();
     } else {
     	if (waeStarted) {
             setTimeout(function() {
@@ -332,7 +311,7 @@ document.addEventListener('simpaticoDestroy', function () {
 // Once the document is loaded the Simpatico features are initialised and the 
 // toolbar added
 document.addEventListener('simpaticoEvent', function () {
-	var  modulo = $('#modulo');
+  var  modulo = $('#modulo');
 	if (!modulo || !modulo.attr('data-simpatico-workflow')) return;
   initFeatures();
   addSimpaticoBottomBar("simpatico_bottom");
@@ -369,7 +348,7 @@ document.addEventListener('simpaticoEvent', function () {
   
   checkShowTutorial();
   setTimeout(toggleBottomBar, 1000);
-  
+
   $('#SalvaModulo').click(function() {
 	  toggleBottomBar();
 	});
@@ -435,7 +414,7 @@ function tutorialContent(step) {
 					'<p><b>A sinistra</b> trovi l’elenco dei dati richiesti (blocchi) evidenziando quello attuale</p>'+
 					'<p><b>A destra</b> trovi un aiuto per capire cosa inserire in quel blocco e le risposte alle domande più comuni</p>'+
 					'<br><p>Una volta inserito i dati nel blocco puoi proseguire la compilazione premendo il pulsante “Successivo”</p>'+
-					'<br><p>Se ti sei dimenticato qualcosa di importante ti verr�  segnalato in rosso.</p>';
+					'<br><p>Se ti sei dimenticato qualcosa di importante ti verrà segnalato in rosso.</p>';
 	}
 }
 	
@@ -447,17 +426,3 @@ function updateForm(sessionId) {
 	}
 	
 }
-
-//document.addEventListener('DOMContentLoaded', function () {
-//	setTimeout(function(){
-//		document.dispatchEvent(new Event('simpaticoEvent'));
-//	}, 500);
-//});
-//setTimeout(function() {
-//	  document.dispatchEvent(new Event('simpaticoDestroy'));
-////	  setTimeout(function() {
-////		  document.dispatchEvent(new Event('simpaticoEvent'));
-////	}, 2000);
-//}, 5000);
-
-  

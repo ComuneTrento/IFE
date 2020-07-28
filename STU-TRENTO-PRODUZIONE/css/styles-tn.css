@@ -13,7 +13,7 @@
 
 #titlerow {
     padding-top: 130px;
-    background-image: url(images/comune.png);
+    background-image: url(../images/comune.png);
     height: 200px;
     background-repeat: no-repeat;
     background-position: top left;
@@ -148,6 +148,7 @@
 }
 
 body {
-    background-image: url(images/sfondo.png);
+    background-image: url(../images/sfondo.png);
     background-repeat: repeat-x;
 }
+
