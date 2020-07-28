@@ -13,10 +13,10 @@ function isTestProd() {
 }
 
 function logEnabled() {
-  return isProd() || isTestProd();
+  return false; //isProd() || isTestProd();
 }
 function sfEnabled() {
-  return !isProd() && !isTestProd();
+  return false; //!isProd() && !isTestProd();
 }
 
 // It inits all the enabled features of IFE
@@ -71,7 +71,7 @@ function initFeatures() {
     questionsBoxClassName: "simp-ctz-ui-qb",
     questionsBoxTitle: "Domande legate",
     addQuestionLabel: "+ Aggiungi una domanda",
-    diagramNotificationImage: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/diagram.png",
+    diagramNotificationImage: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/diagram.png",
     diagramNotificationClassName: "simp-ctz-ui-diagram",
     diagramNotificationText: "C'e' una visualizzazione di e-service in Citizenpedia",
     questionSelectionFilters: ['h1', '.Rigaintestazione', '.Rigaintestazioneridotta']
@@ -216,8 +216,8 @@ function initFeatures() {
   buttons = [{
                   id: "simp-bar-sw-login",
                   // Ad-hoc images to define the enabled/disabled images
-                  imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/ic_on.png",
-                  imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/login.png",
+                  imageSrcEnabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/ic_on.png",
+                  imageSrcDisabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/login.png",
                   alt: "Entra",
                   // Ad-hoc css classes to define the enabled/disabled styles
                   styleClassEnabled: "simp-none",
@@ -230,8 +230,8 @@ function initFeatures() {
 
                 { // WAE. Switch to the modality, where the form adaptation starts
                     id: 'workflow',
-                    imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/forms.png",
-                    imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/forms.png",
+                    imageSrcEnabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/forms.png",
+                    imageSrcDisabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/forms.png",
                     alt: "Compilazione guidata del modulo",
                     // Ad-hoc css classes to define the enabled/disabled styles
                     styleClassEnabled: "simp-bar-btn-active",
@@ -244,8 +244,8 @@ function initFeatures() {
                 { // CITIZENPEDIA
                   id: "simp-bar-sw-citizenpedia",
                   // Ad-hoc images to define the enabled/disabled images
-                  imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/citizenpedia.png",
-                  imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/citizenpedia.png",
+                  imageSrcEnabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/citizenpedia.png",
+                  imageSrcDisabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/citizenpedia.png",
                   alt: "Accedi alle domande e risposte associate agli elementi del modulo",
                   // Ad-hoc css classes to define the enabled/disabled styles
                   styleClassEnabled: "simp-bar-btn-active",
@@ -258,8 +258,8 @@ function initFeatures() {
                 { // TAE
                     id: "simp-bar-sw-tae-popup",
                     // Ad-hoc images to define the enabled/disabled images
-                    imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/enrich.png",
-                    imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/enrich.png",
+                    imageSrcEnabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/enrich.png",
+                    imageSrcDisabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/enrich.png",
                     alt: "Semplificazione del testo selezionato",
                     // Ad-hoc css classes to define the enabled/disabled styles
                     styleClassEnabled: "simp-bar-btn-active",
@@ -277,8 +277,8 @@ function initFeatures() {
                   },
                     { // CPD: procedure model
                         id: 'process',
-                        imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/diagram.png",
-                        imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/diagram.png",
+                        imageSrcEnabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/diagram.png",
+                        imageSrcDisabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/diagram.png",
                         alt: "Procedura amministrativa",
                         // Ad-hoc css classes to define the enabled/disabled styles
                         styleClassEnabled: "simp-bar-btn-active",
@@ -288,29 +288,13 @@ function initFeatures() {
                         enable: function() { citizenpediaUI.getInstance().openDiagram(); },
                         disable: function() {  }
                       },
-
-//                  { // SF: session feedback
-//                      id: 'sf',
-//                      imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/feedback.png",
-//                      imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/feedback.png",
-//                      alt: "La tua opinione",
-//                      // Ad-hoc css classes to define the enabled/disabled styles
-//                      styleClassEnabled: "simp-bar-btn-active",
-//                      styleClassDisabled: "simp-bar-btn-inactive",
-//                      label: 'Feedback',
-//                      isEnabled: function() { return false; },
-//                      enable: function() { sfUI.getInstance().showSF(); },
-//                      disable: function() { sfUI.getInstance().hideSF(); },
-//                      exclusive: true
-//                    }
-
             ];
 //  if (!isProd()) {
     buttons.splice(buttons.length - 1, 0, { // CDV
         id: "simp-bar-sw-cdv",
           // Ad-hoc images to define the enabled/disabled images
-          imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/cdv.png",
-          imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/cdv.png",
+          imageSrcEnabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/cdv.png",
+          imageSrcDisabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/cdv.png",
           alt: "Salva e precompila i campi usando i tuoi dati personali attraverso Citizen Data Vault",
           // Ad-hoc css classes to define the enabled/disabled styles
           styleClassEnabled: "simp-bar-btn-active",
@@ -402,7 +386,7 @@ function addSimpaticoBar(containerID) {
   var simpaticoBarHtml = '<div id="simp-bar">' +
                             '<div>' +
                               '<a href="#">' +
-                                '<img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/logo.png" ' +
+                                '<img src="https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/logo.png" ' +
                                 'height="50px" ' +
                                 'alt="Simpatico ">' +
                               '</a>' +
@@ -477,17 +461,17 @@ document.addEventListener('simpaticoEvent', function () {
   }
 
   var link = document.createElement( "link" );
-  link.href = "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/css/moduli.css";
+  link.href = "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/css/moduli.css";
   link.type = "text/css";
   link.rel = "stylesheet";
   document.getElementsByTagName( "head" )[0].appendChild( link );
   link = document.createElement( "link" );
-  link.href = "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/css/simpatico.css";
+  link.href = "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/css/simpatico.css";
   link.type = "text/css";
   link.rel = "stylesheet";
   document.getElementsByTagName( "head" )[0].appendChild( link );
   link = document.createElement( "link" );
-  link.href = "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/css/trento.css";
+  link.href = "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/css/trento.css";
   link.type = "text/css";
   link.rel = "stylesheet";
   document.getElementsByTagName( "head" )[0].appendChild( link );
@@ -520,7 +504,7 @@ function checkShowTutorial() {
           '<div id="dialog-tutorial">' +
           ' <div id="tutorial">'+
              '<div class="tutorial-header">'+
-                 '<img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/logo.png" ' +
+                 '<img src="https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/logo.png" ' +
                     'style="vertical-align: bottom;" height="50px" alt="Simpatico">'+
                     '<div style="display: inline-block;"><h1 style="margin: 0;">Simpatico</h1><span style="float:right;">TUTORIAL</span></div>'+
                  '</div>'+
@@ -570,12 +554,12 @@ function nextTutorial() {
 function tutorialContent(step) {
   switch(step) {
   case 0: return '<p>Il servizio SIMPATICO mette a disposizione strumenti per semplificare la compilazione dei moduli online.</p><br/><p>Per accedere alle funzionalitÃ  effettua l\'accesso in alto a destra.</p>';
-  case 1: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/forms.png"></td><td width="100%">La funzionalitÃ  COMPILAZIONE GUIDATA ti accompagna passo-passo nella compilazione del modulo online.</td></tr></table>';
-  case 2: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/citizenpedia.png"></td><td width="100%">La funzionalitÃ  DOMANDE E RISPOSTE ti permette di leggere e/o inserire domande legate a specifiche sezioni del servizio.</td></tr></table>';
-  case 3: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/enrich.png"></td><td width="100%">La funzionalitÃ  SEMPLIFICAZIONE TESTO mette a disposizione strumenti per meglio comprendere le frasi nel modulo. Per attivarla devi selezionare il testo da semplificare e cliccare sull\'icona.</td></tr></table>';
-  case 4: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/cdv.png"></td><td width="100%">La funzionalitÃ  DATI PERSONALI ti consente di salvare e recuperare in altri moduli le informazioni che hai inserito (es. nucleo familiare).</td></tr></table>';
-  case 5: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/diagram.png"></td><td width="100%">La funzionalitÃ  PROCEDURA ti permette di avere uno sguardo di insieme dei passi previsti per lâ€™attivazione e lâ€™utilizzo del servizio.</td></tr></table>';
-//  case 6: return '<table><tr><td><img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/feedback.png"></td><td width="100%">La funzione FEEDBACK ti consente di esprimere in ogni momento una valutazione rispetto alle funzionalitÃ  di SIMPATICO.</td></tr></table>';
+  case 1: return '<table><tr><td><img src="https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/forms.png"></td><td width="100%">La funzionalitÃ  COMPILAZIONE GUIDATA ti accompagna passo-passo nella compilazione del modulo online.</td></tr></table>';
+  case 2: return '<table><tr><td><img src="https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/citizenpedia.png"></td><td width="100%">La funzionalitÃ  DOMANDE E RISPOSTE ti permette di leggere e/o inserire domande legate a specifiche sezioni del servizio.</td></tr></table>';
+  case 3: return '<table><tr><td><img src="https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/enrich.png"></td><td width="100%">La funzionalitÃ  SEMPLIFICAZIONE TESTO mette a disposizione strumenti per meglio comprendere le frasi nel modulo. Per attivarla devi selezionare il testo da semplificare e cliccare sull\'icona.</td></tr></table>';
+  case 4: return '<table><tr><td><img src="https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/cdv.png"></td><td width="100%">La funzionalitÃ  DATI PERSONALI ti consente di salvare e recuperare in altri moduli le informazioni che hai inserito (es. nucleo familiare).</td></tr></table>';
+  case 5: return '<table><tr><td><img src="https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/diagram.png"></td><td width="100%">La funzionalitÃ  PROCEDURA ti permette di avere uno sguardo di insieme dei passi previsti per lâ€™attivazione e lâ€™utilizzo del servizio.</td></tr></table>';
+//  case 6: return '<table><tr><td><img src="https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/feedback.png"></td><td width="100%">La funzione FEEDBACK ti consente di esprimere in ogni momento una valutazione rispetto alle funzionalitÃ  di SIMPATICO.</td></tr></table>';
   }
 }
 

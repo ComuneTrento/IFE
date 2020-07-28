@@ -1,0 +1,281 @@
+body {
+    margin-left: 0 !important;
+    margin-top: 60px !important;
+}
+form {
+    padding-left: 1cm;
+}
+
+/********************************/
+/** CUSTOM TOOLBAR STYLING   **/
+/********************************/
+#simp-bar {
+    background-color: #d3d3d6 !important;
+    font-family: inherit !important;
+    font-size: 14px  !important;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+#simp-bar div, #simp-bar ul {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#simp-bar-sw-tae-popup img {
+    padding-right: 100px;
+}
+
+#simp-bar-sw-tae-popup .toolbar-button-label {
+    position: absolute;
+    right: 0;
+    padding-top: 13px;
+    pointer-events: none;
+}
+.toolbar-button-label {
+    max-width: 100px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    font-size: 11px;
+}
+#simp-bar-container-left li {
+    position: relative;
+}    
+
+#simp-usr-data {
+    font-size: 12px;
+    display: block;
+    color: #399E4C;
+    font-weight: bold;
+} 
+/********************************/
+/** CUSTOM TAE POPUP STYLING   **/
+/********************************/
+.ui-widget-content .simpatico-label {
+    background-color: #337ab7;
+    color: #ffffff;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    padding-right: 0.3em;
+    padding-left: 0.3em;
+    border-radius: .25em;
+}
+
+/***************************/
+/** CUSTOM CTZP STYLING   **/
+/***************************/
+.simp-ctz-ui-qb a {
+    text-decoration: none;
+}
+
+.simp-paragraph-active {
+    position: relative;
+    border-left: 0;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+}
+.simp-paragraph-active::before {
+	content: "";
+	position: absolute;
+	width: 1cm;
+	height: 100%;
+	left: 19.05cm;
+	background-image:
+		url(https://dev.smartcommunitylab.it/simp-engines/wae/webdemo/img/citizenpedia.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	border-left: 3px solid #24BCDA;
+}
+
+.simp-ctz-ui-qb {
+	position: absolute;
+	left: 20.5cm;
+	top: 0;
+	min-width: 8cm;
+	margin-left: 0 !important;
+    border-radius: 0 !important;
+    border-left: 0 !important;
+}
+
+.simp-ctz-ui-qb p {
+    border-radius: 0 !important;
+    margin: 0 !important;
+}
+
+.simp-ctz-ui-diagram {
+	display: none !important;
+}
+/***************************/
+/** CUSTOM SF STYLING     **/
+/***************************/
+.session-feedback-comments {
+	margin: 0;
+	padding: 0;
+}
+.session-feedback-comments textarea {
+	width: calc(100% - 6px);
+}
+
+.slider-horizontal-text-below-left, .slider-horizontal-text-below-right {
+	font-weight: bold;
+	margin: 0;
+}
+
+.slider-session-feedback-content, .session-feedback-content, .session-feedback-radio, #faces-session-feedback-content {
+    padding: 5px 6% !important;
+    margin-top: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;	
+}
+
+.slider-session-feedback-content form {
+	padding: 0;
+	text-align: center;
+}
+
+.slider {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.session-feedback-radio .form-group {
+	display: inline-block;
+	padding: 0 20px 10px 20px; 
+}
+.session-feedback-radio {
+	text-align: center;
+}
+
+.mensaje {
+	padding-bottom: 10px;
+	font-weight: bold;
+}
+
+#buttons_session_feedback {
+	margin: 20px 6%;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	height: 30px;
+}
+
+#buttons_session_feedback a {
+    background-color: #d3d3d6 !important;
+}
+
+.button_cancel_session_feedback {
+	margin-left: 0 !important;
+    display: inline;
+    background-color: #d3d3d6 !important;
+    margin-top: 6px;
+}
+
+#button_send_session_feedback_a {
+	margin-right: 0 !important;
+	display: inline;
+    background-color: #d3d3d6 !important;
+}
+
+
+
+/***************************/
+/**       TUTORIAL        **/
+/***************************/
+.tutorial-dialog .ui-dialog-titlebar {
+	display: none;
+}
+
+.tutorial-dialog .tutorial-header {
+	text-align: center;
+	margin-top: 20px;
+}
+
+#tutorial-buttons {
+	margin: 30px 10px 10px 20px;
+	padding-bottom: 10px;
+	float: right;
+}
+#tutorial-buttons a {
+	text-transform: uppercase;
+	font-size: 16px;
+	margin-left: 20px;
+	text-decoration: none;
+}
+#tutorialcontent {
+	margin: 40px 20px;
+}
+#tutorialcontent img {
+	vertical-align: bottom;
+	height: 50px;
+}
+#tutorialcontent td {
+	border: 0 !important;
+}
+#tutorialnext {
+   color: #339645;
+} 
+#tutorialesc {
+   color: #DD4039;
+} 
+
+#cdv_toolbar_buttons {
+	top: 52px !important;
+}
+/********************************/
+/** CUSTOM WAE STYLING IN CASE OF DIALOG   **/
+/********************************/
+
+#modulo-html-dialog #div_simpatico_block_description,
+#modulo-html-dialog .simp-ctz-ui-qb {
+    right: inherit!important;
+    left: calc(100% + 1cm + 3px) !important;
+    width: calc(50vw - 50% - 1.5cm - 3px) !important;
+    top: 0px !important;
+}
+
+#modulo-html-dialog #div_simpatico_block_description .div_simpatico_block_description_content, 
+#modulo-html-dialog #div_simpatico_block_description > h5, 
+#modulo-html-dialog .simp-ctz-ui-qb p {
+	padding: 10px 5px;
+}
+
+#modulo-html-dialog .block_edited {
+	width: calc(100% + 6px) !important;
+	margin-left: -3px !important;
+}
+
+#modulo-html-dialog .simp-paragraph-active::before {
+	border-left: 0!important;
+}
+
+.ui-dialog {
+	z-index: 100000 !important;
+}
+#cdv_toolbar_buttons {
+    z-index: 100000 !important;
+}
+
+.ngdialog-theme-modulo {
+	margin-top: 52px;
+}
+
+
+/********************************/
+/** CUSTOM TAE STYLING IN CASE OF INLINE **/
+/********************************/
+
+.simpatico-text-paragraph-active {
+    border-left: 5px solid #DE453E;
+    padding: 8px;
+    margin-top: 2px;
+}
+.simp-tae-ui-sb {
+    border-radius: 0!important;
+} 
+
+.simp-tae-ui-sb p {
+    border-radius: 0!important;
+}
+
+.simp-tae-ui-sb li {
+    background: none !important;
+}

@@ -59,7 +59,7 @@ function initFeatures() {
     questionsBoxClassName: "simp-ctz-ui-qb",
     questionsBoxTitle: "Domande legate",
     addQuestionLabel: "+ Aggiungi una domanda",
-    diagramNotificationImage: "https://raw.githubusercontent.com/ComuneTrento/SPRINT-IFE/master/STU-TRENTO-STAGING/img/diagram.png",
+    diagramNotificationImage: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/diagram.png",
     diagramNotificationClassName: "simp-ctz-ui-diagram",
     diagramNotificationText: "C'e' una visualizzazione di e-service in Citizenpedia",
     questionSelectionFilters: ['h1', '.Rigaintestazione', '.Rigaintestazioneridotta']
@@ -88,8 +88,8 @@ function initFeatures() {
   buttons = [
                 { //  workflow adaptation. Switch to the modality, where the form adaptation starts
                   id: 'workflow',
-                  imageSrcEnabled: "https://raw.githubusercontent.com/ComuneTrento/SPRINT-IFE/master/STU-TRENTO-STAGING/img/play.png",
-                  imageSrcDisabled: "https://raw.githubusercontent.com/ComuneTrento/SPRINT-IFE/master/STU-TRENTO-STAGING/img/play.png",
+                  imageSrcEnabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/play.png",
+                  imageSrcDisabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/img/play.png",
                   alt: "Guida",
                   // Ad-hoc css classes to define the enabled/disabled styles
                   styleClassEnabled: "simp-bottomBar-btn-active",
@@ -321,22 +321,17 @@ document.addEventListener('simpaticoEvent', function () {
   }
   
   var link = document.createElement( "link" );
-  link.href = "https://raw.githubusercontent.com/ComuneTrento/SPRINT-IFE/master/STU-TRENTO-STAGING/css/moduli.css";
+  link.href = "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/css/moduli.css";
   link.type = "text/css";
   link.rel = "stylesheet";
   document.getElementsByTagName( "head" )[0].appendChild( link );
   link = document.createElement( "link" );
-  link.href = "https://raw.githubusercontent.com/ComuneTrento/SPRINT-IFE/master/STU-TRENTO-STAGING/css/simpatico.css";
+  link.href = "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/css/simpatico.css";
   link.type = "text/css";
   link.rel = "stylesheet";
-//  document.getElementsByTagName( "head" )[0].appendChild( link );
-//  link = document.createElement( "link" );
-//  link.href = "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/css/trento.css";
-//  link.type = "text/css";
-//  link.rel = "stylesheet";
   document.getElementsByTagName( "head" )[0].appendChild( link );
   link = document.createElement( "link" );
-  link.href = "https://raw.githubusercontent.com/ComuneTrento/SPRINT-IFE/master/STU-TRENTO-STAGING/css/trento.V2.css";
+  link.href = "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-STAGING/css/trento.V2.css";
   link.type = "text/css";
   link.rel = "stylesheet";
   document.getElementsByTagName( "head" )[0].appendChild( link );
