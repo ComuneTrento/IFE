@@ -5,20 +5,6 @@
 //
 //-----------------------------------------------------------------------------
 
-function isProd() {
-  return window.location.origin.indexOf('sportello.comune.trento.it') >= 0;
-}
-function isTestProd() {
-  return window.location.origin.indexOf('sportellotest.comune.trento.it') >= 0;
-}
-
-function logEnabled() {
-  return isProd() || isTestProd();
-}
-function sfEnabled() {
-  return !isProd() && !isTestProd();
-}
-
 // It inits all the enabled features of IFE
 function initFeatures() {
   if (!window.simpaticoEserviceName) {
@@ -33,26 +19,6 @@ function initFeatures() {
   if (!window.serviceURL) {
     serviceURL = simpaticoEserviceURL;
   }
-  // Init the Auth component (see simpatico-auth.js)
-  // - endpoint: the main URL of the used AAC instance
-  // - clientID: the IFE Client ID registered
-  // - authority: the used authentication mechanism or null if many allowed
-  // - redirect: url redirect (default is /IFE/login.html)
-  //  authManager.getInstance().init({
-  //    endpoint: 'https://tn.smartcommunitylab.it/aac',
-  //    clientID: '8ab03990-d5dd-47ea-8fc6-c92a3b0c04a4',
-  //    authority: null,
-  //    redirect: 'https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/logincb.html',
-  //    greeting: 'ACCEDI A SIMPATICO'
-  //  });
-
-  // Init the LOG component (see log-core.js)
-  // - endpoint: the main URL of the used LOG instance
-  // - testMode: true if the data should not be sent to the LOG component
-  logCORE.getInstance().init({
-    testMode: !logEnabled(),
-    endpoint: "https://simpatico.smartcommunitylab.it/simpatico-logs/api"
-  });
 
   // Init the Citizenpedia component (see ctz-ui.js)
   // - endpoint: the main URL of the used Citizenpedia instance
@@ -76,7 +42,7 @@ function initFeatures() {
     questionsBoxClassName: "simp-ctz-ui-qb",
     questionsBoxTitle: "Domande legate",
     addQuestionLabel: "+ Aggiungi una domanda",
-    diagramNotificationImage: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/diagram.png",
+    diagramNotificationImage: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-PRODUZIONE/img/diagram.png",
     diagramNotificationClassName: "simp-ctz-ui-diagram",
     diagramNotificationText: "C'e' una visualizzazione di e-service in Citizenpedia",
     questionSelectionFilters: ['h1', '.Rigaintestazione', '.Rigaintestazioneridotta'],
@@ -87,7 +53,7 @@ function initFeatures() {
   taeUIInline.getInstance().init({
     endpoint: 'https://simpatico.smartcommunitylab.it/simp-engines/tae',
     textContainerQuery: "block-stu3-italia-content",
-    textQueryString: "div,p,li",
+    textQueryString: "p,li",
     elementId: 'simp-bar-sw-tae-inline',
     synonimLabel:'Sinonimi',
     definitionLabel: 'Definizioni e sinonimi',
@@ -95,7 +61,7 @@ function initFeatures() {
     definitionHint: 'Mostra definizione e sinonimi di alcune parole',
     simplifiedTextHint:'Mostra una versione semplice del testo selezionato',
     questionsURL: "https://simpatico.smartcommunitylab.it/qae/questions",
-    resourceURL: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/demo/resources",
+    resourceURL: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-PRODUZIONE",
   });
 
 
@@ -107,8 +73,8 @@ function initFeatures() {
     {	// TAE
       id: "simp-bar-sw-tae-inline",
       // Ad-hoc images to define the enabled/disabled images
-      imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/demo/resources/images/textTool.png",
-      imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/demo/resources/images/textTool.png",
+      imageSrcEnabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-PRODUZIONE/img/textTool.png",
+      imageSrcDisabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-PRODUZIONE/img/textTool.png",
       alt: "Semplificazione del testo selezionato",
       // Ad-hoc css classes to define the enabled/disabled styles
       styleClassEnabled: "simp-none",
@@ -126,8 +92,8 @@ function initFeatures() {
     { //DIAGRAM
       id: "simp-bar-sw-cpd",
       // Ad-hoc images to define the enabled/disabled images
-      imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/demo/resources/images/procedure.png",
-      imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/demo/resources/images/procedure.png",
+      imageSrcEnabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-PRODUZIONE/img/procedure.png",
+      imageSrcDisabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-PRODUZIONE/img/procedure.png",
       alt: "Procedura",
       // Ad-hoc css classes to define the enabled/disabled styles
       styleClassEnabled: "simp-none",
@@ -140,8 +106,8 @@ function initFeatures() {
     { // CITIZENPEDIA
       id: "simp-bar-sw-citizenpedia",
       // Ad-hoc images to define the enabled/disabled images
-      imageSrcEnabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/demo/resources/images/questions.png",
-      imageSrcDisabled: "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/demo/resources/images/questions.png",
+      imageSrcEnabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-PRODUZIONE/img/questions.png",
+      imageSrcDisabled: "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-PRODUZIONE/img/questions.png",
       alt: "Accedi alle domande e risposte associate agli elementi del modulo",
       // Ad-hoc css classes to define the enabled/disabled styles
       styleClassEnabled: "simp-none",
@@ -215,7 +181,7 @@ function addSimpaticoBar(containerID) {
   var simpaticoBarHtml = '<div id="simp-bar">' +
     '<div onclick="clickShowTutorial();">' +
     //'<a href="#">' +
-    '<img class="logoSmall" src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/logo.png" ' +
+    '<img class="logoSmall" src="https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-PRODUZIONE/img/logo.png" ' +
     'alt="Simpatico ">Simpatico' +
     //'</a>' +
     '</div>';
@@ -298,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   var link = document.createElement( "link" );
-  link.href = "https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/css/simpatico-new-trento.css";
+  link.href = "https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-PRODUZIONE/css/simpatico-new-trento.css";
   link.type = "text/css";
   link.rel = "stylesheet";
   document.getElementsByTagName( "head" )[0].appendChild( link );
@@ -341,7 +307,7 @@ function checkShowTutorial() {
         '<div id="dialog-tutorial">' +
         '	<div id="tutorial">'+
         '<div class="tutorial-header">'+
-        '<img src="https://simpatico.smartcommunitylab.it/simp-engines/wae/webdemo/img/logo.png" ' +
+        '<img src="https://cdn.jsdelivr.net/gh/ComuneTrento/SPRINT-IFE/STU-TRENTO-PRODUZIONE/img/logo.png" ' +
         'style="vertical-align: bottom;" height="50px" alt="Simpatico">'+
         '<div style="display: inline-block;"><h1 style="margin: 0;">Simpatico</h1><span style="float:right;">TUTORIAL</span></div>'+
         '</div>'+
