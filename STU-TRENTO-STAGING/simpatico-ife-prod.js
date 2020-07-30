@@ -409,7 +409,7 @@ function tutorialContent(step) {
 					'<p><b>A sinistra</b> trovi l’elenco dei dati richiesti (blocchi) evidenziando quello attuale</p>'+
 					'<p><b>A destra</b> trovi un aiuto per capire cosa inserire in quel blocco e le risposte alle domande più comuni</p>'+
 					'<br><p>Una volta inserito i dati nel blocco puoi proseguire la compilazione premendo il pulsante “Successivo”</p>'+
-					'<br><p>Se ti sei dimenticato qualcosa di importante ti verrà segnalato in rosso.</p>';
+					'<br><p>Se ti sei dimenticato qualcosa di importante ti verrà segnalato <b>in rosso</b>.</p>';
 	}
 }
 	
