@@ -811,3 +811,13 @@ var ast = (function () {
         }
     };
 })();
+
+$('button.has-spinner').click(function (evt) {
+  evt.preventDefault();
+  var el = document.getElementById('container');
+  if (!el) {
+    el = document.getElementsByClassName('container')[0];
+  }
+  var text = $('#text').val();
+  ast.getInstance().process("https://simpatico.smartcommunitylab.it/simp-engines", text, el);
+});
